@@ -1,0 +1,89 @@
+body{
+    background-image: linear-gradient(to right top, #3d3f42, #303032, #232223, #151415, #000000);
+    -webkit-background-size:cover;
+    background-size:cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+#myModal{
+
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+  }
+
+
+
+.login{
+    border-top: 2px black inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    padding: 3rem;
+    color: white;
+}
+
+ul.nav{
+    padding: 1rem;
+}
+
+a.nav-link.active{
+    color: white;
+    font-size: larger;
+    border-bottom: 3px inset black;
+}
+
+a.nav-link.active:hover{
+    color: gray;
+}
+
+.btn.btn-outline-dark{
+    color:White;
+}
+
+.display-4.a{
+    color: white;
+    text-align: center;
+    padding-top: 3rem;
+}
+
+.display-1.title{
+   border-bottom: 2px black inset;
+}
+
+
+#nameprod{
+    transition: 200ms ease-in-out;
+}
+
+#nameprod:hover{
+    font-size: 2rem;
+}
+
+.btn.btn-outline-dark{
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.list-group-item{
+    transition: 200ms ease-in-out;
+}
+
+.list-group-item:hover{
+    background-color: rgb(236, 229, 229);
+    
+}
+
+.card.bg-dark.text-white{
+    opacity: 70%;
+}
+
+

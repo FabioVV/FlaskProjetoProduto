@@ -2,24 +2,24 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Produto</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename= 'App.css')}}">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{url_for('static',filename= 'func.js')}}"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar Produto</title>
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename= 'all_prods.css')}}">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{{url_for('static',filename= 'func.js')}}"></script>
 </head>
 
 <body>
   <script src="{{url_for('static',filename= 'func.js')}}"></script>
-<section class="vh-100 gradient-custom">
+  <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -28,35 +28,46 @@
               <div class="mb-md-5 mt-md-4 pb-5">
                 <h2 class="fw-bold mb-2 text-uppercase">Cadastro de produtos</h2>
                 <p class="text-white-50 mb-5">Por favor, entre seus dados!</p>
-                <form method="post" action="{% if id_produto != -1 %}/produto/editar/{{id_produto}}{% else %}/produto/novo{% endif %}">
-                        {% if id_produto != -1 %}
-                            <div class="form-outline form-white mb-4">
-                                <input type="text" id="cod"  class="form-control form-control-lg" value="{{id_produto}}" readonly>
-                                <label for="nome">Código do produto</label>
-                            </div>
-                        {% endif %}
-                        <div class="form-outline form-white mb-4">
-                            <input type="text" name="nome" id="nome" required class="form-control form-control-lg" value="{{prod.nome}}">
-                            <label  class="form-label" for="login">Nome do produto</label>
-                        </div>
-                        <div class="form-outline form-white mb-4">
-                            
-                            <input type="number" name="preco" id="preco" required class="form-control form-control-lg" value="{{prod.preco}}">
-                            <label for="senha"  class="form-label">Preço do produto</label>
-                        </div>
-                        <div class="form-outline form-white mb-4">
-                            <input type="number" name="ano" id="ano" required class="form-control form-control-lg"" value="{{prod.ano}}">
-                            <label for="senha2"  class="form-label">Ano de produção do produto</label>
-                        </div>
-                        <div class="form-outline form-white mb-4">
-                            <label for="senha2"  class="form-label">Descricão do produto</label>
-                            <input type="text" name="desc" id="desc" required class="form-control form-control-lg" value="{{prod.desc}}">
-                        </div>
-                        <button class="btn btn-outline-light btn-lg px-5" type="submit">Cadastrar produto</button>
-                    </form>
-                    </div>
-                    <div>
-                <p class="mb-0">Deseja voltar? <a href="/produto" class="text-white-50 fw-bold">Ir para tela de produtos</a>
+                <form method="post"
+                  action="{% if id_produto != -1 %}/produto/editar/{{id_produto}}{% else %}/produto/novo{% endif %}">
+                  {% if id_produto != -1 %}
+                  <div class="form-outline form-white mb-4">
+                    <input type="text" id="cod" class="form-control form-control-lg" value="{{id_produto}}" readonly>
+                    <label for="nome">Código do produto</label>
+                  </div>
+                  {% endif %}
+                  <div class="form-outline form-white mb-4">
+                    <input type="text" name="nome" id="nome" required class="form-control form-control-lg"
+                      value="{{prod.nome}}">
+                    <label class="form-label" for="login">Nome do produto</label>
+                  </div>
+                  <div class="form-outline form-white mb-4">
+
+                    <input type="number" name="preco" id="preco" required class="form-control form-control-lg"
+                      value="{{prod.preco}}">
+                    <label for="senha" class="form-label">Preço do produto</label>
+                  </div>
+                  <div class="form-outline form-white mb-4">
+                    <input type="number" name="ano" id="ano" required class="form-control form-control-lg"" value="
+                      {{prod.ano}}">
+                    <label for="senha2" class="form-label">Ano de produção do produto</label>
+                  </div>
+                  <div class="form-outline form-white mb-4">
+                    <label for="senha2" class="form-label">Descricão do produto</label>
+                    <input type="text" name="desc" id="desc" required class="form-control form-control-lg"
+                      value="{{prod.desc}}">
+                  </div>
+                  <div class="form-outline form-white mb-4">
+                    <label for="url_foto" class="form-label">URL da imagem (Link) do produto</label>
+                    <input type="text" name="url_foto" id="url_foto" required class="form-control form-control-lg"
+                      value="{{prod.url_foto}}">
+                  </div>
+                  <button class="btn btn-outline-light btn-lg px-5" type="submit">Cadastrar produto</button>
+                </form>
+              </div>
+              <div>
+                <p class="mb-0">Deseja voltar? <a href="/produto" class="text-white-50 fw-bold">Ir para tela de
+                    produtos</a>
                 </p>
               </div>
             </div>
