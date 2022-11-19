@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <h1 class="display-4 a">Bem-vindo ao registro de produtos.</h1>
+  <h1  class="display-4 a">Bem-vindo ao registro de produtos eletrônicos.</h1>
   {%with messages= get_flashed_messages()%}
   {%if messages%}
   {% for msg in messages%}
@@ -25,6 +25,9 @@
   {%endfor%}
   {%endif%}
   {%endwith%}
+  <!--
+        Javascript, que utiliza a função settimout, que apos um tempo remove as mensagems flash: exemplo ()/Logado com sucesso
+    -->
   <script>
 
     setTimeout(function () {
@@ -39,8 +42,10 @@
       background-color: yellow;
       color: black;
       font-size: 2rem;
-
+     
     }
+
+
   </style>
 
   <section class="vh-100 gradient-custom">

@@ -63,3 +63,27 @@ a.nav-link.active:hover{
     padding-left: 3rem;
     padding-right: 3rem;
 }
+
+.list-group-item{
+    transition: 200ms ease-in-out;
+}
+
+.list-group-item:hover{
+    background-color: rgb(236, 229, 229);
+    
+}
+
+
+
+
+
+
+
+.card.bg-dark.text-white{
+    opacity: 70%;
+}
+
+
+
+
+

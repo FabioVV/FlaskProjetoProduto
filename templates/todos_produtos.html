@@ -26,7 +26,11 @@
     {%endif%}
     {%endwith%}
     <h3 class="display-1 title" style="text-align: center">Seja bem-vindo, {{session["usuario_logado"]}}!</h3>
+    <!--
+        Javascript, que utiliza a função settimout, que apos um tempo remove as mensagems flash: exemplo ()/Logado com sucesso
+    -->
     <script>
+        
         setTimeout(function () {
             document.getElementById("msg").remove()
         }, 2000)
@@ -77,14 +81,20 @@
                                     <h6 class="font-weight-bold my-2">R$ {{ prod[p].preco }}</h6>
                                     <ul class="list-inline small">
                                         <li class="list-inline-item m-0">
+                                            <form action="/produto/{{ p }}"><button
+                                                    class="btn btn-secondary" style="margin-bottom:1rem ;"
+                                                    type="submit">Ver</button></form><i
+                                                class="fa fa-star text-success"></i>
+                                        </li>
+                                        <li class="list-inline-item m-0">
                                             <form method="POST" action="/produto/excluir/{{ p }}"><button
-                                                    class="btn btn-outline-info" style="margin-bottom:1rem ;"
+                                                    class="btn btn-danger" style="margin-bottom:1rem ;"
                                                     type="submit">Excluir</button></form><i
                                                 class="fa fa-star text-success"></i>
                                         </li>
                                         <li class="list-inline-item m-0">
                                             <form method="GET" action="/produto/editar/{{ p }}"><button
-                                                    class="btn btn-outline-info" style="margin-bottom:1rem ;"
+                                                    class="btn btn-secondary" style="margin-bottom:1rem ;"
                                                     type="submit">Editar</button></form><i
                                                 class="fa fa-star text-success"></i>
                                         </li>
