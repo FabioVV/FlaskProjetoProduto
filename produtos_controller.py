@@ -9,8 +9,8 @@ from usuarios import *
 
 # Instacia a classe que guarda os usuarios
 usuarios = user()
-
 usuarios.admin_user("admin", "admin", "admin")
+usuarios.novo_user("fabio", "fabio", "teste")
 
 app = Flask(__name__)
 app.secret_key = "chavesecreta"
@@ -18,7 +18,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 
 
 ######
-# FUncção que checa qual usuario esta logado
+# Fnção que checa qual usuario esta logado
 def quem_esta_logado() -> InformacoesUsuarioSemSenha or None:
     if "usuario_logado" not in session:
         return None
@@ -49,9 +49,14 @@ def index():
     return render_template("index.html", prods=prods)
 
 
-@app.route("/contato")
-def contato():
-    return render_template("contato.html")
+@app.route("/carrinho")
+def carrinho():
+    return render_template("carrinho.html")
+
+
+@app.route("/reservar")
+def reservar():
+    return render_template("reservar.html")
 
 
 @app.route("/computador")
@@ -67,6 +72,11 @@ def sobre():
 @app.route("/notebook")
 def notebook():
     return render_template("notebook.html")
+
+
+@app.route("/ver_principal")
+def ver_principal():
+    return render_template("ver_principal.html", prods=prods)
 
 
 # Esse é o login, essa função rendereiza a view do login, para se logar e se cadastrar
@@ -88,7 +98,7 @@ def login():
         flash("Logado com sucesso!", "info")
         return redirect("/produto")
 
-    except SenhaIncorreta as erro:
+    except SenhaIncorreta:
 
         flash("Senha incorreta!", "error")
         return redirect("/login")

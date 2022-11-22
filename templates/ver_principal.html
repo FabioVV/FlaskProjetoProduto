@@ -135,7 +135,8 @@
          <div class="row">
             <div class="col-md-12">
                <div class="titlepage">
-                  <h2>Nossos produtos</h2>
+                  <h2>Nosso principal, único e próprio produto!!</h2>
+                  <h1 class="display-4">Raider GE76 - 12U </h1>
                </div>
             </div>
          </div>
@@ -143,41 +144,18 @@
             <div class="col-md-12">
                <div class="our_products">
                   <div class="row">
-                     {% for p in prod %}
-                     <div class="col-md-4 margin_bottom1">
+                     <div class="col-md-12 margin_bottom1">
                         <div class="product_box">
-                           <figure><img src="{{prod[p].url_foto}}" width="200" height="100" alt="#" /></figure>
-                           <h3>{{ prod[p].nome}}</h3>
-                           <p class="font-italic mb-0 small">{{ prod[p].desc }}</p>
-                           <h6 class="font-weight-bold my-2">R$ {{ prod[p].preco }}</h6>
-                           {% if "usuario_logado" in session and session["usuario_logado"] != "admin"%}
-                           <li class="list-inline-item m-0">
-                              <form method="GET" action="/produto/editar/{{ p }}"><button class="btn btn-secondary"
-                                    style="margin-bottom:1rem ;" type="submit">Adicionar no carrinho</button></form><i
-                                 class="fa fa-star text-success"></i>
-                           </li>
-                           {% endif %}
-                           <li class="list-inline-item m-0">
-                              <form action="/produto/{{ p }}" method="get" id="verprod">
-                                 <button class="btn btn-secondary" style="margin-bottom:1rem ;"
-                                    type="submit">ver</button>
-                              </form>
-                           </li>
-                           {% if session["usuario_logado"] == "admin" %}
-                           <li class="list-inline-item m-0">
-                              <form method="POST" action="/produto/excluir/{{ p }}"><button class="btn btn-danger"
-                                    style="margin-bottom:1rem ;" type="submit">Excluir</button></form><i
-                                 class="fa fa-star text-success"></i>
-                           </li>
-                           <li class="list-inline-item m-0">
-                              <form method="GET" action="/produto/editar/{{ p }}"><button class="btn btn-secondary"
-                                    style="margin-bottom:1rem ;" type="submit">Editar</button></form><i
-                                 class="fa fa-star text-success"></i>
-                           </li>
+                           <img id="ima" src="{{prods[10].url_foto}}" alt="Imagem do produto." />
+                           <p class="font-italic text-muted mb-0 small display-4">{{ prods[10].desc }}</p>
+                           <h6 class="font-weight-bold my-2 display-3">R$ {{ prods[10].preco }}</h6>
+                           {% if "usuario_logado" in session %}
+                           <a class="read_more" href="/reservar">Reserve agora!</a>
+                           {% else %}
+                           <a class="read_more" href="/login">Registre-se ou realize o login para reservar!!</a>
                            {% endif %}
                         </div>
                      </div>
-                     {% endfor %}
                   </div>
                </div>
             </div>

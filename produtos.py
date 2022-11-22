@@ -1,14 +1,19 @@
-proximo_codigo = 5
+proximo_codigo = 11
 
 prods = {
     1: {"nome": "Monitor ASUS Pro AXT", "preco": 1200, "ano": 2017, "desc": "Monitor 144hz",
         "url_foto": "https://www.asus.com/media/global/products/fIeqEqPIr9BRQXa1/i3smlrxWdm40xIFT_setting_xxx_0_90_end_2000.png"},
     2: {"nome": "RTX 3060 TI", "preco": 2300, "ano": 2020, "desc": "Placa de vídeo",
         "url_foto": "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/news/geforce-rtx-3060-ti-out-december-2/nvidia-geforce-rtx-3060-ti-announcement-article-key-visual.jpg"},
-    3: {"nome": "Apple iPhone XR (Red, 128 GB)", "preco": 7200, "ano": 2017, "desc":
-        '128 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera', "url_foto": "https://www.apple.com/newsroom/images/product/iphone/standard/iPhone_XR_red-back_09122018_carousel.jpg.large.jpg"},
-    4: {"nome": "OnePlus 7 Pro (Almond, 256 GB)", "preco": 6200, "ano": 2019, "desc":
-        "Rear Camera|48MP (Primary)+ 8MP (Tele-photo)+16MP (ultrawide)| Front Camera|16 MP POP-UP Camera|8GB RAM|Android pie", "url_foto": "https://m.media-amazon.com/images/I/41DaETFkyeS._AC_.jpg"}
+    3: {"nome": "Alienware X15", "preco": 17500, "ano": 2022, "desc": "i9-11900H RTX 3080 FHD", "url_foto": "https://www.notebookcheck.info/uploads/tx_nbc2/Alienwarex15-R1__1_.jpg"},
+    4: {"nome": "Exterminator i9", "preco": 29000, "ano": 2022, "desc": "i9-10900 Rtx 3090ti- Ddr4 128gb - M.2 2tb - Hd 8t", "url_foto": "https://http2.mlstatic.com/D_NQ_NP_768107-MLB50628298466_072022-O.webp"},
+    5: {"nome": "Alienware Area-51m", "preco": 7999, "ano": 2020, "desc": "i9-10900K, RTX 2080 Super", "url_foto": "https://www.notebookcheck.info/uploads/tx_nbc2/a3.JPG"},
+    6: {"nome": "Workstation R1", "preco": 1299, "ano": 2017, "desc": "I5 2400 8gb Ssd 240 Gb", "url_foto": "https://http2.mlstatic.com/D_NQ_NP_736842-MLB50532055192_062022-O.webp"},
+    7: {"nome": "Placa de Vídeo RX 6750 XT ELITE", "preco": 3599, "ano": 2019, "desc": "Tamanho da memória: 12 GB, Tipo de memória: GDDR6", "url_foto": "https://images.kabum.com.br/produtos/fotos/345888/placa-de-video-gigabyte-amd-radeon-rx-6750xt-gv-r675xtaorus-e-12gd_1652209231_gg.jpg"},
+    8: {"nome": "Teclado Gamer Steelseries Apex 3", "preco": 5000, "ano": 2018, "desc": "RGB, Anti-ghosting, Switches Whisper-quiet", "url_foto": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/396754/Teclado-Gamer-Steelseries-Apex-3-RGB-Anti-ghosting-Switches-Whisper-quiet-Us-64795_1666644520_gg.jpg"},
+    9: {"nome": "Mouse Gamer Sem Fio Logitech G PRO", "preco": 499, "ano": 2017, "desc": "Wireless LIGHTSPEED, RGB LIGHTSYNC, Ambidestro, 6 Botões Programáveis, HERO 25K", "url_foto": "https://images.kabum.com.br/produtos/fotos/107333/mouse-gamer-sem-fio-logitech-g-pro-wireless-lightspeed-rgb-lightsync-ambidestro-6-botoes-programaveis-hero-25k-910-005271_1644501564_gg.jpg"},
+    10: {"nome": "Raider GE76 - 12U", "preco": 59999, "ano": 2022, "desc": "RTX 3080 Ti, Core i9-12900HK e tela de 360Hz", "url_foto": "https://asset.msi.com/resize/image/global/product/product_1639040638b7515d6bb3107aa4916d9302bac76680.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png"}
+
 }
 
 

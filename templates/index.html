@@ -27,12 +27,12 @@
 
 
 </head>
-<!-- body -->
+
 
 <body class="main-layout">
-   <!-- header -->
+
    <header>
-      <!-- header inner -->
+
       <div class="header">
          <div class="container-fluid">
             <div class="row">
@@ -68,15 +68,27 @@
                            <li class="nav-item">
                               <a class="nav-link" href="/produto">Produtos</a>
                            </li>
-                           <li class="nav-item">
-                              <a class="nav-link" href="/contato">Nos contate!</a>
-                           </li>
-                           {% if "usuario_logado" in session %}
+                           {% if "usuario_logado" in session and session["usuario_logado"] != "admin"%}
                            <li class="nav-item d_none">
-                              <a class="nav-link a" href="#"><button class="btn btn-outline-dark" type="button"
+                              <a class="nav-link" href="#"><button class="btn btn-secondary" type="button"
                                     onclick="javascript:logoutClick()">Sair</button></a>
                               <form action="{{ url_for('logout') }}" id="form_logout" method="POST"
                                  style="display: none"></form>
+                           <li class="nav-item">
+                              <h1 class="nav-link">Olá, {{ session["usuario_logado"] }}!</h1>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="/carrinho">Carrinho</a>
+                           </li>
+                           </li>
+                           {% elif "usuario_logado" in session %}
+                           <li class="nav-item d_none">
+                              <a class="nav-link" href="#"><button class="btn btn-secondary" type="button"
+                                    onclick="javascript:logoutClick()">Sair</button></a>
+                              <form action="{{ url_for('logout') }}" id="form_logout" method="POST"
+                                 style="display: none"></form>
+                           <li class="nav-item">
+                              <h1 class="nav-link">Olá, {{ session["usuario_logado"] }}!</h1>
                            </li>
                            {% else %}
                            <li class="nav-item d_none">
@@ -91,7 +103,13 @@
          </div>
       </div>
    </header>
-   <!-- end header inner -->
+   {%with messages= get_flashed_messages()%}
+   {%if messages%}
+   {% for msg in messages%}
+   <p id="msg">{{msg}}</p>
+   {%endfor%}
+   {% endif %}
+   {%endwith%}
    <!-- end header -->
    <!-- banner -->
    <section class="banner_main">
@@ -107,7 +125,8 @@
                               <h1>Acessórios</h1>
                               <p>There are many variations of passages of Lorem Ipsum available, but the majority have
                                  suffered alteration in some form, by injected humour, or </p>
-                              <a href="#">Compre agora</a> <a href="contato.html">Contato </a>
+                              <a href="/produto">Compre agora nossos produtos!</a> <a href="/ver_principal">Compre agora
+                                 nosso notebook! </a>
                            </div>
                         </div>
                         <div class="col-md-6">
