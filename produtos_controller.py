@@ -10,6 +10,8 @@ from usuarios import *
 # Instacia a classe que guarda os usuarios
 usuarios = user()
 
+usuarios.admin_user("admin", "admin", "admin")
+
 app = Flask(__name__)
 app.secret_key = "chavesecreta"
 app.config["SESSION_TYPE"] = "filesystem"
@@ -41,8 +43,33 @@ def apenas_usuarios_logados(wrapped: Callable[..., Any]) -> Callable[..., Any]:
 
 ######
 
-# Home page é o login, essa função rendereiza a view do login, para se logar e se cadastrar
+
 @app.route("/")
+def index():
+    return render_template("index.html", prods=prods)
+
+
+@app.route("/contato")
+def contato():
+    return render_template("contato.html")
+
+
+@app.route("/computador")
+def computador():
+    return render_template("computador.html")
+
+
+@app.route("/sobre")
+def sobre():
+    return render_template("sobre.html")
+
+
+@app.route("/notebook")
+def notebook():
+    return render_template("notebook.html")
+
+
+# Esse é o login, essa função rendereiza a view do login, para se logar e se cadastrar
 @app.route("/login")
 def tela_login():
     return render_template("login.html")
@@ -108,7 +135,7 @@ def logout():
 
 def logar(usuario: InformacoesUsuarioSemSenha or None):
     if usuario is not None:
-        session["usuario_logado"] = usuario.login
+        session["usuario_logado"] = (usuario.login)
 
     elif "usuario_logado" in session:
         del session["usuario_logado"]
@@ -146,6 +173,7 @@ def novo_produto_form():
     produto_vazio = {"nome": "", "preco": ""}
     return render_template("registrar_produto.html", prod=produto_vazio, id_produto=-1)
 
+
 # ESsa funçÃp renderiza a tela de edição do produto selecionado
 
 
@@ -176,6 +204,8 @@ def excluir_prod(id_produto):
     remover_produto(id_produto)
     flash("Produto excluido com sucesso.", "info")
     return redirect("/produto")
+
+# FUnção que renderiza a tela do produto selecionado
 
 
 @app.route("/produto/<int:id>")

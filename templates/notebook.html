@@ -21,34 +21,14 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"></script>
-   <link rel="stylesheet" type="text/css" href="{{url_for('static',filename= 'style.css')}}">
-   <link rel="stylesheet" type="text/css" href="{{url_for('static',filename= 'responsive.css')}}">
-
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename= 'style.css')}}">
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename= 'responsive.css')}}">
 
 
 </head>
 <!-- body -->
 
 <body class="main-layout inner_posituong contact_page">
-
-   <script>
-
-      setTimeout(function () {
-         document.getElementById("msg").remove()
-      }, 2000)
-
-
-
-   </script>
-   <style>
-      p#msg {
-         text-align: center;
-         background-color: greenyellow;
-         color: black;
-         font-size: 2rem;
-      }
-   </style>
-
    <!-- header -->
    <header>
       <!-- header inner -->
@@ -72,11 +52,6 @@
                      </button>
                      <div class="collapse navbar-collapse" id="navbarsExample04">
                         <ul class="navbar-nav mr-auto">
-                           {% if session["usuario_logado"] == "admin" %}
-                           <li style="margin-right: 15px;" class="nav-item ">
-                              <a class="nav-link active " href="/produto/novo">Cadastrar um novo produto.</a>
-                           </li>
-                           {% endif %}
                            <li class="nav-item ">
                               <a class="nav-link" href="/">Home</a>
                            </li>
@@ -86,10 +61,10 @@
                            <li class="nav-item">
                               <a class="nav-link" href="/computador">Computador</a>
                            </li>
-                           <li class="nav-item">
+                           <li class="nav-item active">
                               <a class="nav-link" href="/notebook">Notebook</a>
                            </li>
-                           <li class="nav-item active">
+                           <li class="nav-item">
                               <a class="nav-link" href="/produto">Produtos</a>
                            </li>
                            <li class="nav-item">
@@ -113,102 +88,67 @@
                         </ul>
                      </div>
                   </nav>
-
                </div>
             </div>
          </div>
       </div>
    </header>
    <!-- end header inner -->
-   {%with messages= get_flashed_messages()%}
-   {%if messages%}
-   {% for msg in messages%}
-   <p id="msg">{{msg}}</p>
-   {%endfor%}
-   {% endif %}
-   {%endwith%}
    <!-- end header -->
-   <!-- products -->
-   <div class="products">
+   <!-- laptop1 -->
+   <div class="laptop1">
       <div class="container">
          <div class="row">
-            <div class="col-md-12">
-               <div class="titlepage">
-                  <h2>Nossos produtos</h2>
+            <div class="col-md-7">
+               <div class="laptop1_img">
+                  <figure><img src="{{url_for('static', filename='leptop.jpg')}}" alt="#" /></figure>
                </div>
             </div>
-         </div>
-         <div class="row">
-            <div class="col-md-12">
-               <div class="our_products">
-                  <div class="row">
-                     {% for p in prod %}
-                     <div class="col-md-4 margin_bottom1">
-                        <div class="product_box">
-                           <figure><img src="{{prod[p].url_foto}}" width="200" height="100" alt="#" /></figure>
-                           <h3 onclick="javascript:verproduto3()">{{ prod[p].nome}}</h3>
-                           <form action="/produto/{{ 3 }}" method="get" id="verprod3" style="display: none"></form>
-                           <p class="font-italic mb-0 small">{{ prod[p].desc }}</p>
-                           <h6 class="font-weight-bold my-2">R$ {{ prod[p].preco }}</h6>
-                           {% if session["usuario_logado"] == "admin" %}
-                           <li class="list-inline-item m-0">
-                              <form method="POST" action="/produto/excluir/{{ p }}"><button class="btn btn-danger"
-                                    style="margin-bottom:1rem ;" type="submit">Excluir</button></form><i
-                                 class="fa fa-star text-success"></i>
-                           </li>
-                           <li class="list-inline-item m-0">
-                              <form method="GET" action="/produto/editar/{{ p }}"><button class="btn btn-secondary"
-                                    style="margin-bottom:1rem ;" type="submit">Editar</button></form><i
-                                 class="fa fa-star text-success"></i>
-                           </li>
-                           {% endif %}
-                        </div>
-                     </div>
-                     {% endfor %}
-                  </div>
+            <div class="col-md-5">
+               <div class="titlepage">
+                  <h2>Notebook</h2>
+                  <p>Estamos lançando nossa marca marca de notebooks em breve! Veja a clicando no link
+                     abaixo mais sobre ele.
+                  </p>
+                  <a class="read_more" href="#">Ver produto!</a>
                </div>
             </div>
          </div>
       </div>
    </div>
-   <!-- end products -->
-
    <footer>
       <div class="footer">
-         <div class="container">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+              <img class="logo1" src="{{url_for('static', filename='logo.png')}}" alt="#" />
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+              <h3>Sobre nós</h3>
+              <ul class="about_us">
+                <li>dolor sit amet, consectetur<br> magna aliqua. Ut enim ad <br>minim veniam, <br> quisdotempor
+                  incididunt r</li>
+              </ul>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+              <h3>Nos contate</h3>
+              <ul class="conta">
+                <li>dolor sit amet,<br> consectetur <br>magna aliqua.<br> quisdotempor <br>incididunt ut e </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <div class="container">
             <div class="row">
-               <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                  <img class="logo1" src="{{url_for('static', filename='logo.png')}}" alt="#" />
-               </div>
-               <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                  <h3>Sobre nós</h3>
-                  <ul class="about_us">
-                     <li>dolor sit amet, consectetur<br> magna aliqua. Ut enim ad <br>minim veniam, <br> quisdotempor
-                        incididunt r</li>
-                  </ul>
-               </div>
-               <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                  <h3>Nos contate</h3>
-                  <ul class="conta">
-                     <li>dolor sit amet,<br> consectetur <br>magna aliqua.<br> quisdotempor <br>incididunt ut e </li>
-                  </ul>
-               </div>
+              <div class="col-md-12">
+                <p>© 2022 Todos os direitos reservados.</p>
+              </div>
             </div>
-         </div>
-         <div class="copyright">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-12">
-                     <p>© 2022 Todos os direitos reservados.</p>
-                  </div>
-               </div>
-            </div>
-         </div>
+          </div>
+        </div>
       </div>
-   </footer>
-
-
-   <script src="{{url_for('static',filename= 'func.js')}}"></script>
+    </footer>
+    <script src="{{url_for('static',filename= 'func.js')}}"></script>
 </body>
-
 </html>

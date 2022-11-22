@@ -13,15 +13,7 @@ img {
     height: auto;
   }
 
-.login{
-    border-top: 2px black inset;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.title{
-    padding: 3rem;
+  h5, h6, p{
     color: white;
 }
 
@@ -38,6 +30,21 @@ a.nav-link.active{
 a.nav-link.active:hover{
     color: gray;
 }
+
+
+
+.login{
+    border-top: 2px black inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    padding: 3rem;
+    color: white;
+}
+
 
 .btn.btn-outline-dark{
     color:White;
@@ -86,11 +93,6 @@ a.nav-link.active:hover{
    
     background-image: linear-gradient(to right top, #3d3f42, #303032, #232223, #151415, #000000);
 }
-
-h5, h6, p{
-    color: white;
-}
-
 
 .font-italic.mb-0.small{
     color: white;

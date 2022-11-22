@@ -5,6 +5,7 @@ from dataclasses import dataclass
 class InformacoesUsuarioSemSenha:
     login: str
     nome: str
+    admin: bool
 
 
 @dataclass(frozen=True)
@@ -12,10 +13,11 @@ class userdata:
     login: str
     nome: str
     senha: str
+    admin: bool
 
     @property
     def sem_senha(self) -> InformacoesUsuarioSemSenha:
-        return InformacoesUsuarioSemSenha(self.login, self.nome)
+        return InformacoesUsuarioSemSenha(self.login, self.nome, self.admin)
 
 
 class UsuarioJaExiste(Exception):
@@ -30,10 +32,16 @@ class user:
     def __init__(self):
         self.__users = {}
 
+    def admin_user(self, login: str, nome: str, senha: str):
+        if login in self.__users:
+            raise UsuarioJaExiste
+        us = userdata(login, nome, senha, True)
+        self.__users[login] = us
+
     def novo_user(self, login: str, nome: str, senha: str):
         if login in self.__users:
             raise UsuarioJaExiste
-        us = userdata(login, nome, senha)
+        us = userdata(login, nome, senha, False)
         self.__users[login] = us
 
     def validar_login(self, login: str, senha: str):
@@ -49,5 +57,5 @@ class user:
             return None
         return self.__users[login].sem_senha
 
-    def name(self):
-        return userdata.nome
+    def return_admin(self, login):
+        return self.__users[login]
