@@ -151,6 +151,10 @@
                            <h3>{{ car[p].nome}}</h3>
                            <p class="font-italic mb-0 small">{{ car[p].desc }}</p>
                            <h6 class="font-weight-bold my-2">R$ {{ car[p].preco }}</h6>
+                           {%if car[p]["nome"] == "Exterminator i9" or car[p]["nome"]
+                           == "Workstation R1"%}
+                           <h6 id="desconto" class="font-weight-bold my-2">40% de desconto nesse computador!</h6>
+                           {% endif %}
                            <li class="list-inline-item m-0">
                               <form action="/produto/{{ p }}" method="get" id="verprod">
                                  <button class="btn btn-secondary" style="margin-bottom:1rem ;"
@@ -165,15 +169,19 @@
                         </div>
                      </div>
                      {% endfor %}
-                     
+
                   </div>
+                  {% if car %}
                   <a class="read_more" href="/time">Finalizar compra</a>
+                  {% else %}
+                  <a class="read_more" href="#">Adicione produtos ao seu carrinho!</a>
+                  {% endif %}
                </div>
             </div>
          </div>
-        
+
       </div>
-      
+
    </div>
 
    <footer>
@@ -193,10 +201,11 @@
                   <h3>Nos contate</h3>
                   <ul class="conta">
                      <li> <a class="a" href="mailto:email@protonmail.com">Email</a><br>
-                         <a class="a" href="#">Instagram</a>
-                         <br><a class="a" href="#">Linkedin</a>
-                         <br><a class="a" href="#">Whatsapp</a> 
-                         <br><a class="a" href="#">Twitter</a></li>
+                        <a class="a" href="#">Instagram</a>
+                        <br><a class="a" href="#">Linkedin</a>
+                        <br><a class="a" href="#">Whatsapp</a>
+                        <br><a class="a" href="#">Twitter</a>
+                     </li>
                   </ul>
                </div>
             </div>
@@ -205,7 +214,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-md-12">
-                     <p>© 2022 All Rights Reserved.</p>
+                     <p>© 2022 Todos os direitos reservados.</p>
                   </div>
                </div>
             </div>

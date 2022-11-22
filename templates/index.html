@@ -124,7 +124,8 @@
                               <span>Computador e notebook</span>
                               <h1>O melhor aqui.</h1>
                               <p>O melhor do mundo gamer somente aqui. O melhor do workstation somente aqui.</p>
-                              <a href="/produto">Compre agora nossos produtos!</a> <a href="/ver_principal">Reserve agora
+                              <a href="/produto">Compre agora nossos produtos!</a> <a href="/ver_principal">Reserve
+                                 agora
                                  nosso notebook! </a>
                            </div>
                         </div>
@@ -148,18 +149,16 @@
                <div class="box_text">
                   <i><img src="{{url_for('static',filename= 'thr.png')}}" alt="#" /></i>
                   <h3>Computador</h3>
-                  <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                     alteration in some form, by injected humour, or randomised words which don't look even slightly
-                     believable. </p>
+                  <p>Os melhores computadores de mesa somente aqui. Seja para jogar, trabalhar ou passar tempo, temos o
+                     melhor para você. </p>
                </div>
             </div>
             <div class="col-md-6">
                <div class="box_text">
                   <i><img src="{{url_for('static',filename= 'thr1.png')}}" alt="#" /></i>
                   <h3>Notebook</h3>
-                  <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                     alteration in some form, by injected humour, or randomised words which don't look even slightly
-                     believable. </p>
+                  <p>Notebooks customizados, rápidos e com ótimo custo beneficio, somente aqui.
+                     Sejá para usar na faculdade ou em casa, jogar ou trabalhar. Temos os melhores.</p>
                </div>
             </div>
          </div>
@@ -172,7 +171,7 @@
          <div class="row">
             <div class="col-md-12">
                <div class="titlepage">
-                  <h2>Nossos produtos em destaque!</h2>
+                  <h2>Nossos produtos!</h2>
                </div>
             </div>
          </div>
@@ -180,54 +179,41 @@
             <div class="col-md-12">
                <div class="our_products">
                   <div class="row">
+                     {% for p in prods%}
                      <div class="col-md-4 margin_bottom1">
                         <div class="product_box">
-                           <figure><img src="{{prods[1].url_foto}}" width="200" height="100" alt="#" /></figure>
-                           <h3 onclick="javascript:verproduto()">{{prods[1].nome}}</h3>
-                           <form action="/produto/{{ 1 }}" method="get" id="verprod" style="display: none"></form>
+                           <figure><img src="{{prods[p].url_foto}}" width="200" height="100" alt="#" /></figure>
+                           <h3 onclick="javascript:verproduto()">{{prods[p].nome}}</h3>
+                           <form action="/produto/{{ p }}" method="get" id="verprod" style="display: none"></form>
                         </div>
                      </div>
-                     <div class="col-md-4 margin_bottom1">
-                        <div class="product_box">
-                           <figure><img src="{{prods[2].url_foto}}" width="200" height="100" alt="#" alt="#" /></figure>
-                           <h3 onclick="javascript:verproduto2()">{{prods[2].nome}}</h3>
-                           <form action="/produto/{{ 2 }}" method="get" id="verprod2" style="display: none"></form>
-                        </div>
-                     </div>
-                     <div class="col-md-4 margin_bottom1">
-                        <div class="product_box">
-                           <figure><img src="{{prods[3].url_foto}}" width="200" height="100" alt="#" alt="#" /></figure>
-                           <h3 onclick="javascript:verproduto3()">{{prods[3].nome}}</h3>
-                           <form action="/produto/{{ 3 }}" method="get" id="verprod3" style="display: none"></form>
-                        </div>
-                     </div>
+                     {% endfor %}
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+      <!-- end products -->
+      <!-- laptop  section -->
+      <div class="laptop">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="titlepage">
+                     <p>Todos os computadores e em breve notebooks</p>
+                     <h2>Até 40% de desconto!</h2>
+                     <a class="read_more" href="/produto">Compre agora!</a>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="laptop_box">
+                     <figure><img src="{{url_for('static',filename= 'pc.png')}}" alt="#" /></figure>
                   </div>
                </div>
             </div>
          </div>
-
       </div>
-   </div>
-   <!-- end products -->
-   <!-- laptop  section -->
-   <div class="laptop">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-6">
-               <div class="titlepage">
-                  <p>Todos os computadores e em breve notebooks</p>
-                  <h2>Até 40% de desconto!</h2>
-                  <a class="read_more" href="/produto">Compre agora!</a>
-               </div>
-            </div>
-            <div class="col-md-6">
-               <div class="laptop_box">
-                  <figure><img src="{{url_for('static',filename= 'pc.png')}}" alt="#" /></figure>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
    </div>
 
    <footer>
@@ -247,10 +233,11 @@
                   <h3>Nos contate</h3>
                   <ul class="conta">
                      <li> <a class="a" href="mailto:email@protonmail.com">Email</a><br>
-                         <a class="a" href="#">Instagram</a>
-                         <br><a class="a" href="#">Linkedin</a>
-                         <br><a class="a" href="#">Whatsapp</a> 
-                         <br><a class="a" href="#">Twitter</a></li>
+                        <a class="a" href="#">Instagram</a>
+                        <br><a class="a" href="#">Linkedin</a>
+                        <br><a class="a" href="#">Whatsapp</a>
+                        <br><a class="a" href="#">Twitter</a>
+                     </li>
                   </ul>
                </div>
             </div>
@@ -259,7 +246,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-md-12">
-                     <p>© 2022 All Rights Reserved.</p>
+                     <p>© 2022 Todos os direitos reservados.</p>
                   </div>
                </div>
             </div>

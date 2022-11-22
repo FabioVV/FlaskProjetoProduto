@@ -239,14 +239,14 @@ def excluir_prod(id_produto):
     flash("Produto excluido com sucesso.", "info")
     return redirect("/produto")
 
+
 # FUnção que renderiza a tela do produto selecionado
-
-
 @app.route("/produto/<int:id>")
 def verprod(id):
     for p in prods:
         if p == id:
             return render_template("ver.html", produto=prods[id], prv=id)
+    #flash("Produto não encontrado.", "info")
     return render_template("produto404.html"), 404
 
 

@@ -1072,3 +1072,9 @@ a.a{
 a.a:hover{
      color: blue;
 }
+
+#desconto{
+     color: red;
+     text-decoration: underline;
+     font-size: large;
+}
