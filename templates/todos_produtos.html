@@ -152,7 +152,7 @@
                            <h6 class="font-weight-bold my-2">R$ {{ prod[p].preco }}</h6>
                            {% if "usuario_logado" in session and session["usuario_logado"] != "admin"%}
                            <li class="list-inline-item m-0">
-                              <form method="GET" action="/produto/editar/{{ p }}"><button class="btn btn-secondary"
+                              <form method="POST" action="/carrinho/{{ p }}"><button class="btn btn-secondary"
                                     style="margin-bottom:1rem ;" type="submit">Adicionar no carrinho</button></form><i
                                  class="fa fa-star text-success"></i>
                            </li>

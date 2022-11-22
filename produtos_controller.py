@@ -4,6 +4,7 @@ from flask import (Flask, flash, redirect, render_template, request, session,
                    url_for)
 from werkzeug.wrappers.response import Response
 
+from carrinho_p import *
 from produtos import *
 from usuarios import *
 
@@ -47,11 +48,6 @@ def apenas_usuarios_logados(wrapped: Callable[..., Any]) -> Callable[..., Any]:
 @app.route("/")
 def index():
     return render_template("index.html", prods=prods)
-
-
-@app.route("/carrinho")
-def carrinho():
-    return render_template("carrinho.html")
 
 
 @app.route("/reservar")
@@ -174,6 +170,10 @@ def novo_produto():
     flash("Produto criado com sucesso.", "info")
     return redirect("/produto")
 
+# Adicionar ao carrinho
+
+##
+
 # Essa função renderiza a tela com o formulario ara criação do produto
 
 
@@ -185,6 +185,27 @@ def novo_produto_form():
 
 
 # ESsa funçÃp renderiza a tela de edição do produto selecionado
+@app.route("/carrinho")
+def carrinho():
+    return render_template("carrinho.html", car=carrinho_produtos)
+
+
+@app.route("/carrinho/excluir/<int:id_produto>", methods=["POST"])
+@apenas_usuarios_logados
+def remover_produto_carrinho(id_produto):
+    remover_carrinho(id_produto)
+    flash("Produto excluido com sucesso.", "info")
+    return redirect("/carrinho")
+
+
+@app.route("/carrinho/<int:id_produto>", methods=["POST"])
+@apenas_usuarios_logados
+def novo_produto_carrinho(id_produto):
+    p = {id_produto: {"nome": prods[id_produto]["nome"],
+         "preco": prods[id_produto]["preco"], "ano": prods[id_produto]["ano"], "desc": prods[id_produto]["desc"], "url_foto": prods[id_produto]["url_foto"]}}
+    adicionar_carrinho(p)
+    flash("Produto adicionado ao carrinho com sucesso.", "info")
+    return redirect("/carrinho")
 
 
 @app.route("/produto/editar/<int:id_produto>")
@@ -222,7 +243,7 @@ def excluir_prod(id_produto):
 def verprod(id):
     for p in prods:
         if p == id:
-            return render_template("ver.html", produto=prods[id])
+            return render_template("ver.html", produto=prods[id], prv=id)
     return render_template("produto404.html"), 404
 
 

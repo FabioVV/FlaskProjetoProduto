@@ -13,3 +13,7 @@ function verproduto2(){
 function verproduto3(){
     document.getElementById("verprod3").submit();
 }
+
+function buy(){
+    document.getElementById("buying").submit();
+}
