@@ -1,4 +1,4 @@
-proximo_codigo = 11
+proximo_codigo = 10
 
 prods = {
     1: {"nome": "Monitor ASUS Pro AXT", "preco": 1200, "ano": 2017, "desc": "Monitor 144hz",
@@ -11,10 +11,11 @@ prods = {
     6: {"nome": "Workstation R1", "preco": 1299, "ano": 2017, "desc": "I5 2400 8gb Ssd 240 Gb", "url_foto": "https://http2.mlstatic.com/D_NQ_NP_736842-MLB50532055192_062022-O.webp"},
     7: {"nome": "Placa de Vídeo RX 6750 XT ELITE", "preco": 3599, "ano": 2019, "desc": "Tamanho da memória: 12 GB, Tipo de memória: GDDR6", "url_foto": "https://images.kabum.com.br/produtos/fotos/345888/placa-de-video-gigabyte-amd-radeon-rx-6750xt-gv-r675xtaorus-e-12gd_1652209231_gg.jpg"},
     8: {"nome": "Teclado Gamer Steelseries Apex 3", "preco": 5000, "ano": 2018, "desc": "RGB, Anti-ghosting, Switches Whisper-quiet", "url_foto": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/396754/Teclado-Gamer-Steelseries-Apex-3-RGB-Anti-ghosting-Switches-Whisper-quiet-Us-64795_1666644520_gg.jpg"},
-    9: {"nome": "Mouse Gamer Sem Fio Logitech G PRO", "preco": 499, "ano": 2017, "desc": "Wireless LIGHTSPEED, RGB LIGHTSYNC, Ambidestro, 6 Botões Programáveis, HERO 25K", "url_foto": "https://images.kabum.com.br/produtos/fotos/107333/mouse-gamer-sem-fio-logitech-g-pro-wireless-lightspeed-rgb-lightsync-ambidestro-6-botoes-programaveis-hero-25k-910-005271_1644501564_gg.jpg"},
-    10: {"nome": "Raider GE76 - 12U", "preco": 59999, "ano": 2022, "desc": "RTX 3080 Ti, Core i9-12900HK e tela de 360Hz", "url_foto": "https://asset.msi.com/resize/image/global/product/product_1639040638b7515d6bb3107aa4916d9302bac76680.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png"}
-
+    9: {"nome": "Mouse Gamer Sem Fio Logitech G PRO", "preco": 499, "ano": 2017, "desc": "Wireless LIGHTSPEED, RGB LIGHTSYNC, Ambidestro, 6 Botões Programáveis, HERO 25K", "url_foto": "https://images.kabum.com.br/produtos/fotos/107333/mouse-gamer-sem-fio-logitech-g-pro-wireless-lightspeed-rgb-lightsync-ambidestro-6-botoes-programaveis-hero-25k-910-005271_1644501564_gg.jpg"}
 }
+
+important_prod = {0: {"nome": "Raider GE76 - 12U", "preco": 59999, "ano": 2022, "desc": "RTX 3080 Ti, Core i9-12900HK e tela de 360Hz",
+                      "url_foto": "https://asset.msi.com/resize/image/global/product/product_1639040638b7515d6bb3107aa4916d9302bac76680.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png"}}
 
 
 def adicionar_produto(id: int, produto):

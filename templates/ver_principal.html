@@ -146,9 +146,9 @@
                   <div class="row">
                      <div class="col-md-12 margin_bottom1">
                         <div class="product_box">
-                           <img id="ima" src="{{prods[10].url_foto}}" alt="Imagem do produto." />
-                           <p class="font-italic text-muted mb-0 small display-4">{{ prods[10].desc }}</p>
-                           <h6 class="font-weight-bold my-2 display-3">R$ {{ prods[10].preco }}</h6>
+                           <img id="ima" src="{{important_prod[0].url_foto}}" alt="Imagem do produto." />
+                           <p class="font-italic text-muted mb-0 small display-4">{{ important_prod[0].desc }}</p>
+                           <h6 class="font-weight-bold my-2 display-3">R$ {{ important_prod[0].preco }}</h6>
                            {% if "usuario_logado" in session %}
                            <a class="read_more" href="/reservar">Reserve agora!</a>
                            {% else %}
@@ -162,26 +162,27 @@
          </div>
       </div>
    </div>
-   <!-- end products -->
-
    <footer>
       <div class="footer">
          <div class="container">
             <div class="row">
                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                  <img class="logo1" src="{{url_for('static', filename='logo.png')}}" alt="#" />
+                  <img class="logo1" src="{{url_for('static',filename= 'logo1.png')}}" alt="#" />
                </div>
                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                   <h3>Sobre nós</h3>
                   <ul class="about_us">
-                     <li>dolor sit amet, consectetur<br> magna aliqua. Ut enim ad <br>minim veniam, <br> quisdotempor
-                        incididunt r</li>
+                     <li>Somos uma empresa focada nos entusiastas de computadores e tecnologia.</li>
                   </ul>
                </div>
                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                   <h3>Nos contate</h3>
                   <ul class="conta">
-                     <li>dolor sit amet,<br> consectetur <br>magna aliqua.<br> quisdotempor <br>incididunt ut e </li>
+                     <li> <a class="a" href="mailto:email@protonmail.com">Email</a><br>
+                         <a class="a" href="#">Instagram</a>
+                         <br><a class="a" href="#">Linkedin</a>
+                         <br><a class="a" href="#">Whatsapp</a> 
+                         <br><a class="a" href="#">Twitter</a></li>
                   </ul>
                </div>
             </div>
@@ -190,14 +191,13 @@
             <div class="container">
                <div class="row">
                   <div class="col-md-12">
-                     <p>© 2022 Todos os direitos reservados.</p>
+                     <p>© 2022 All Rights Reserved.</p>
                   </div>
                </div>
             </div>
          </div>
       </div>
    </footer>
-
 
    <script src="{{url_for('static',filename= 'func.js')}}"></script>
 </body>

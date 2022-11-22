@@ -99,7 +99,11 @@
                               <a class="nav-link" href="/carrinho">Carrinho</a>
                            </li>
                            </li>
-                           {% elif "usuario_logado" in session %}
+                           {% elif (("usuario_logado" in session) and session["usuario_logado"] == "admin") %}
+                           <li class="nav-item active">
+                              <a style="text-decoration: underline;" class="nav-link" href="/produto/novo">Registrar
+                                 novo produto</a>
+                           </li>
                            <li class="nav-item d_none">
                               <a class="nav-link" href="#"><button class="btn btn-secondary" type="button"
                                     onclick="javascript:logoutClick()">Sair</button></a>
@@ -147,9 +151,7 @@
                      <div class="col-md-4 margin_bottom1">
                         <div class="product_box">
                            <figure><img src="{{prod[p].url_foto}}" width="200" height="100" alt="#" /></figure>
-                           <h3>{{ prod[p].nome}}</h3>
-                           <p class="font-italic mb-0 small">{{ prod[p].desc }}</p>
-                           <h6 class="font-weight-bold my-2">R$ {{ prod[p].preco }}</h6>
+                           <h3 style="margin-bottom: 1rem;">{{ prod[p].nome}}</h3>
                            {% if "usuario_logado" in session and session["usuario_logado"] != "admin"%}
                            <li class="list-inline-item m-0">
                               <form method="POST" action="/carrinho/{{ p }}"><button class="btn btn-secondary"
@@ -184,26 +186,27 @@
          </div>
       </div>
    </div>
-   <!-- end products -->
-
    <footer>
       <div class="footer">
          <div class="container">
             <div class="row">
                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                  <img class="logo1" src="{{url_for('static', filename='logo.png')}}" alt="#" />
+                  <img class="logo1" src="{{url_for('static',filename= 'logo1.png')}}" alt="#" />
                </div>
                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                   <h3>Sobre nós</h3>
                   <ul class="about_us">
-                     <li>dolor sit amet, consectetur<br> magna aliqua. Ut enim ad <br>minim veniam, <br> quisdotempor
-                        incididunt r</li>
+                     <li>Somos uma empresa focada nos entusiastas de computadores e tecnologia.</li>
                   </ul>
                </div>
                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                   <h3>Nos contate</h3>
                   <ul class="conta">
-                     <li>dolor sit amet,<br> consectetur <br>magna aliqua.<br> quisdotempor <br>incididunt ut e </li>
+                     <li> <a class="a" href="mailto:email@protonmail.com">Email</a><br>
+                         <a class="a" href="#">Instagram</a>
+                         <br><a class="a" href="#">Linkedin</a>
+                         <br><a class="a" href="#">Whatsapp</a> 
+                         <br><a class="a" href="#">Twitter</a></li>
                   </ul>
                </div>
             </div>
@@ -212,14 +215,13 @@
             <div class="container">
                <div class="row">
                   <div class="col-md-12">
-                     <p>© 2022 Todos os direitos reservados.</p>
+                     <p>© 2022 All Rights Reserved.</p>
                   </div>
                </div>
             </div>
          </div>
       </div>
    </footer>
-
 
    <script src="{{url_for('static',filename= 'func.js')}}"></script>
 </body>

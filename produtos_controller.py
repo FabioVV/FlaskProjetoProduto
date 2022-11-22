@@ -43,6 +43,9 @@ def apenas_usuarios_logados(wrapped: Callable[..., Any]) -> Callable[..., Any]:
 
 
 ######
+@app.route("/time")
+def time():
+    return render_template("time.html")
 
 
 @app.route("/")
@@ -72,7 +75,7 @@ def notebook():
 
 @app.route("/ver_principal")
 def ver_principal():
-    return render_template("ver_principal.html", prods=prods)
+    return render_template("ver_principal.html", important_prod=important_prod)
 
 
 # Esse é o login, essa função rendereiza a view do login, para se logar e se cadastrar
@@ -184,10 +187,10 @@ def novo_produto_form():
     return render_template("registrar_produto.html", prod=produto_vazio, id_produto=-1)
 
 
-# ESsa funçÃp renderiza a tela de edição do produto selecionado
+# ESsa funçÃp renderiza a tela do carrinho
 @app.route("/carrinho")
 def carrinho():
-    return render_template("carrinho.html", car=carrinho_produtos)
+    return render_template("carrinho.html", car=carrinho_produtos, preco_tot=retorna_preco())
 
 
 @app.route("/carrinho/excluir/<int:id_produto>", methods=["POST"])

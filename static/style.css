@@ -1052,3 +1052,23 @@ ul.social_icon li a:hover {
 .laptop1_img figure img {
      width: 100%;
 }
+
+.nomes{
+     transition: 200ms ease-in-out;
+     text-decoration: underline;
+     font-size: 1.5rem;
+     margin-bottom: 15px;
+     margin-top: 15px;
+}
+
+.nomes:hover{
+     font-size: 2rem;
+}
+
+a.a{
+     color: white;
+}
+
+a.a:hover{
+     color: blue;
+}

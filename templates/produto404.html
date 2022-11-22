@@ -34,5 +34,44 @@
         <p class="mb-0">Retornar aos produtos?<a href="{{ url_for('produtos') }}" class="text-white-50 fw-bold">Retornar</a>
     </div>
     
+
+    <footer>
+        <div class="footer">
+           <div class="container">
+              <div class="row">
+                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <img class="logo1" src="{{url_for('static',filename= 'logo1.png')}}" alt="#" />
+                 </div>
+                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <h3>Sobre nós</h3>
+                    <ul class="about_us">
+                       <li>Somos uma empresa focada nos entusiastas de computadores e tecnologia.</li>
+                    </ul>
+                 </div>
+                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <h3>Nos contate</h3>
+                    <ul class="conta">
+                       <li> <a class="a" href="mailto:email@protonmail.com">Email</a><br>
+                           <a class="a" href="#">Instagram</a>
+                           <br><a class="a" href="#">Linkedin</a>
+                           <br><a class="a" href="#">Whatsapp</a> 
+                           <br><a class="a" href="#">Twitter</a></li>
+                    </ul>
+                 </div>
+              </div>
+           </div>
+           <div class="copyright">
+              <div class="container">
+                 <div class="row">
+                    <div class="col-md-12">
+                       <p>© 2022 All Rights Reserved.</p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </footer>
+  
+     <script src="{{url_for('static',filename= 'func.js')}}"></script>
 </body>
 </html>
