@@ -23,7 +23,7 @@
       crossorigin="anonymous"></script>
    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename= 'style.css')}}">
    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename= 'responsive.css')}}">
-
+   <script src="https://kit.fontawesome.com/40a86a4cfa.js" crossorigin="anonymous"></script>
 
 
 </head>
@@ -90,7 +90,7 @@
                               <h1 id="namepagepr" class="nav-link">Olá, {{ session["usuario_logado"] }}!</h1>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="/carrinho">Carrinho</a>
+                              <a class="nav-link" href="/carrinho"><i class="fas fa-shopping-cart"></i></a>
                            </li>
                            <li class="nav-item d_none">
                               <a class="nav-link" href="#"><button class="btn btn-secondary" type="button"
@@ -150,27 +150,24 @@
                            <h6 class="font-weight-bold my-2">R$ {{ prod[p].preco }}</h6>
                            {% if "usuario_logado" in session and session["usuario_logado"] != "admin"%}
                            <li class="list-inline-item m-0">
-                              <form method="POST" action="/carrinho/{{ p }}"><button class="btn btn-secondary"
-                                    style="margin-bottom:1rem ;" type="submit">Adicionar no carrinho</button></form><i
-                                 class="fa fa-star text-success"></i>
+                              <form method="POST" action="/carrinho/{{ p }}"><button class="btn btn-success"
+                                    style="margin-bottom:1rem ;" type="submit">Adicionar no carrinho</button></form>
                            </li>
                            {% endif %}
                            <li class="list-inline-item m-0">
                               <form action="/produto/{{ p }}" method="get" id="verprod">
-                                 <button class="btn btn-secondary" style="margin-bottom:1rem ;"
+                                 <button class="btn btn-dark" style="margin-bottom:1rem ;"
                                     type="submit">ver</button>
                               </form>
                            </li>
                            {% if session["usuario_logado"] == "admin" %}
                            <li class="list-inline-item m-0">
                               <form method="POST" action="/produto/excluir/{{ p }}"><button class="btn btn-danger"
-                                    style="margin-bottom:1rem ;" type="submit">Excluir</button></form><i
-                                 class="fa fa-star text-success"></i>
+                                    style="margin-bottom:1rem ;" type="submit">Excluir</button></form>
                            </li>
                            <li class="list-inline-item m-0">
                               <form method="GET" action="/produto/editar/{{ p }}"><button class="btn btn-secondary"
-                                    style="margin-bottom:1rem ;" type="submit">Editar</button></form><i
-                                 class="fa fa-star text-success"></i>
+                                    style="margin-bottom:1rem ;" type="submit">Editar</button></form>
                            </li>
                            {% endif %}
                         </div>

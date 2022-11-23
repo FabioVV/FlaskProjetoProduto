@@ -13,7 +13,7 @@
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
-
+   <script src="https://kit.fontawesome.com/40a86a4cfa.js" crossorigin="anonymous"></script>
    <!-- CSS only -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
@@ -90,7 +90,7 @@
                               <h1 id="namepagepr" class="nav-link">Olá, {{ session["usuario_logado"] }}!</h1>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="/carrinho">Carrinho</a>
+                              <a class="nav-link" href="/carrinho"><i class="fas fa-shopping-cart"></i></a>
                            </li>
                            <li class="nav-item d_none">
                               <a class="nav-link" href="#"><button class="btn btn-secondary" type="button"
@@ -156,14 +156,13 @@
                            {% endif %}
                            <li class="list-inline-item m-0">
                               <form action="/produto/{{ p }}" method="get" id="verprod">
-                                 <button class="btn btn-secondary" style="margin-bottom:1rem ;"
+                                 <button class="btn btn-dark" style="margin-bottom:1rem ;"
                                     type="submit">ver</button>
                               </form>
                            </li>
                            <li class="list-inline-item m-0">
                               <form method="POST" action="/carrinho/excluir/{{ p }}"><button class="btn btn-danger"
-                                    style="margin-bottom:1rem ;" type="submit">Remover</button></form><i
-                                 class="fa fa-star text-success"></i>
+                                    style="margin-bottom:1rem ;" type="submit">Remover</button></form>
                            </li>
                         </div>
                      </div>
