@@ -50,7 +50,6 @@
    </style>
 
    <header>
-      <!-- header inner -->
       <div class="header">
          <div class="container-fluid">
             <div class="row">
@@ -87,32 +86,28 @@
                               <a class="nav-link" href="/produto">Produtos</a>
                            </li>
                            {% if "usuario_logado" in session and session["usuario_logado"] != "admin"%}
-                           <li class="nav-item d_none">
-                              <a class="nav-link" href="#"><button class="btn btn-secondary" type="button"
-                                    onclick="javascript:logoutClick()">Sair</button></a>
-                              <form action="{{ url_for('logout') }}" id="form_logout" method="POST"
-                                 style="display: none"></form>
                            <li class="nav-item">
-                              <h1 class="nav-link">Olá, {{ session["usuario_logado"] }}!</h1>
+                              <h1 id="namepagepr" class="nav-link">Olá, {{ session["usuario_logado"] }}!</h1>
                            </li>
                            <li class="nav-item">
                               <a class="nav-link" href="/carrinho">Carrinho</a>
                            </li>
+                           <li class="nav-item d_none">
+                              <a class="nav-link" href="#"><button class="btn btn-secondary" type="button"
+                                    onclick="javascript:logoutClick()">Sair</button></a>
+                              <form action="{{ url_for('logout') }}" id="form_logout" method="POST"
+                                 style="display: none"></form>
                            </li>
-                           {% elif (("usuario_logado" in session) and session["usuario_logado"] == "admin") %}
-                           <li class="nav-item active">
-                              <a style="text-decoration: underline;" class="nav-link" href="/produto/novo">Registrar
-                                 novo produto</a>
+                           {% elif "usuario_logado" in session %}
+                           <li class="nav-item">
+                              <h1 class="nav-link">Olá, {{ session["usuario_logado"] }}!</h1>
                            </li>
                            <li class="nav-item d_none">
                               <a class="nav-link" href="#"><button class="btn btn-secondary" type="button"
                                     onclick="javascript:logoutClick()">Sair</button></a>
                               <form action="{{ url_for('logout') }}" id="form_logout" method="POST"
                                  style="display: none"></form>
-                           <li class="nav-item">
-                              <h1 class="nav-link">Olá, {{ session["usuario_logado"] }}!</h1>
-                           </li>
-                           {% else %}
+                              {% else %}
                            <li class="nav-item d_none">
                               <a class="nav-link" href="/login">Login</a>
                            </li>
@@ -150,8 +145,9 @@
                      {% for p in prod %}
                      <div class="col-md-4 margin_bottom1">
                         <div class="product_box">
-                           <figure><img src="{{prod[p].url_foto}}" width="200" height="100" alt="#" /></figure>
-                           <h3 style="margin-bottom: 1rem;">{{ prod[p].nome}}</h3>
+                           <figure><img src="{{prod[p].url_foto}}" width="150" alt="#" /></figure>
+                           <h3 >{{ prod[p].nome}}</h3>
+                           <h6 class="font-weight-bold my-2">R$ {{ prod[p].preco }}</h6>
                            {% if "usuario_logado" in session and session["usuario_logado"] != "admin"%}
                            <li class="list-inline-item m-0">
                               <form method="POST" action="/carrinho/{{ p }}"><button class="btn btn-secondary"

@@ -30,9 +30,7 @@
 
 
 <body class="main-layout">
-
    <header>
-
       <div class="header">
          <div class="container-fluid">
             <div class="row">
@@ -69,28 +67,28 @@
                               <a class="nav-link" href="/produto">Produtos</a>
                            </li>
                            {% if "usuario_logado" in session and session["usuario_logado"] != "admin"%}
-                           <li class="nav-item d_none">
-                              <a class="nav-link" href="#"><button class="btn btn-secondary" type="button"
-                                    onclick="javascript:logoutClick()">Sair</button></a>
-                              <form action="{{ url_for('logout') }}" id="form_logout" method="POST"
-                                 style="display: none"></form>
                            <li class="nav-item">
-                              <h1 class="nav-link">Olá, {{ session["usuario_logado"] }}!</h1>
+                              <h1 id="namepagepr" class="nav-link">Olá, {{ session["usuario_logado"] }}!</h1>
                            </li>
                            <li class="nav-item">
                               <a class="nav-link" href="/carrinho">Carrinho</a>
                            </li>
-                           </li>
-                           {% elif "usuario_logado" in session %}
                            <li class="nav-item d_none">
                               <a class="nav-link" href="#"><button class="btn btn-secondary" type="button"
                                     onclick="javascript:logoutClick()">Sair</button></a>
                               <form action="{{ url_for('logout') }}" id="form_logout" method="POST"
                                  style="display: none"></form>
+                           </li>
+                           {% elif "usuario_logado" in session %}
                            <li class="nav-item">
                               <h1 class="nav-link">Olá, {{ session["usuario_logado"] }}!</h1>
                            </li>
-                           {% else %}
+                           <li class="nav-item d_none">
+                              <a class="nav-link" href="#"><button class="btn btn-secondary" type="button"
+                                    onclick="javascript:logoutClick()">Sair</button></a>
+                              <form action="{{ url_for('logout') }}" id="form_logout" method="POST"
+                                 style="display: none"></form>
+                              {% else %}
                            <li class="nav-item d_none">
                               <a class="nav-link" href="/login">Login</a>
                            </li>
@@ -103,6 +101,7 @@
          </div>
       </div>
    </header>
+
    {%with messages= get_flashed_messages()%}
    {%if messages%}
    {% for msg in messages%}
@@ -110,8 +109,7 @@
    {%endfor%}
    {% endif %}
    {%endwith%}
-   <!-- end header -->
-   <!-- banner -->
+
    <section class="banner_main">
       <div id="banner1" class="carousel slide" data-ride="carousel">
          <div class="carousel-inner">
@@ -183,8 +181,11 @@
                      <div class="col-md-4 margin_bottom1">
                         <div class="product_box">
                            <figure><img src="{{prods[p].url_foto}}" width="200" height="100" alt="#" /></figure>
-                           <h3 onclick="javascript:verproduto()">{{prods[p].nome}}</h3>
-                           <form action="/produto/{{ p }}" method="get" id="verprod" style="display: none"></form>
+                           <h3>{{prods[p].nome}}</h3>
+                           <form action="/produto/{{ p }}" method="get" id="verprod">
+                              <button class="btn btn-secondary" style="margin-top:2rem ;" type="submit">Ver
+                                 produto</button>
+                           </form>
                         </div>
                      </div>
                      {% endfor %}

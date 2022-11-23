@@ -50,7 +50,6 @@
    </style>
 
    <header>
-      <!-- header inner -->
       <div class="header">
          <div class="container-fluid">
             <div class="row">
@@ -87,28 +86,28 @@
                               <a class="nav-link" href="/produto">Produtos</a>
                            </li>
                            {% if "usuario_logado" in session and session["usuario_logado"] != "admin"%}
-                           <li class="nav-item d_none">
-                              <a class="nav-link" href="#"><button class="btn btn-secondary" type="button"
-                                    onclick="javascript:logoutClick()">Sair</button></a>
-                              <form action="{{ url_for('logout') }}" id="form_logout" method="POST"
-                                 style="display: none"></form>
                            <li class="nav-item">
-                              <h1 class="nav-link">Olá, {{ session["usuario_logado"] }}!</h1>
+                              <h1 id="namepagepr" class="nav-link">Olá, {{ session["usuario_logado"] }}!</h1>
                            </li>
                            <li class="nav-item">
                               <a class="nav-link" href="/carrinho">Carrinho</a>
                            </li>
-                           </li>
-                           {% elif "usuario_logado" in session %}
                            <li class="nav-item d_none">
                               <a class="nav-link" href="#"><button class="btn btn-secondary" type="button"
                                     onclick="javascript:logoutClick()">Sair</button></a>
                               <form action="{{ url_for('logout') }}" id="form_logout" method="POST"
                                  style="display: none"></form>
+                           </li>
+                           {% elif "usuario_logado" in session %}
                            <li class="nav-item">
                               <h1 class="nav-link">Olá, {{ session["usuario_logado"] }}!</h1>
                            </li>
-                           {% else %}
+                           <li class="nav-item d_none">
+                              <a class="nav-link" href="#"><button class="btn btn-secondary" type="button"
+                                    onclick="javascript:logoutClick()">Sair</button></a>
+                              <form action="{{ url_for('logout') }}" id="form_logout" method="POST"
+                                 style="display: none"></form>
+                              {% else %}
                            <li class="nav-item d_none">
                               <a class="nav-link" href="/login">Login</a>
                            </li>
@@ -135,7 +134,7 @@
          <div class="row">
             <div class="col-md-12">
                <div class="titlepage">
-                  <h2>Seu carrinho</h2>
+                  <h2>Total do seu carrinho</h2>
                   <h3 class="display-4">R$ {{ preco_tot }}</h3>
                </div>
             </div>
