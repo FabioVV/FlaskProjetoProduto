@@ -17,3 +17,8 @@ function verproduto3(){
 function buy(){
     document.getElementById("buying").submit();
 }
+
+setTimeout(function () {
+    let c = document.getElementById("msg")
+    c.remove()
+  }, 2000)
