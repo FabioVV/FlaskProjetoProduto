@@ -17,7 +17,7 @@
                      {% for p in prod %}
                      <div class="col-md-4 margin_bottom1">
                         <div class="product_box">
-                           <figure><img src="{{prod[p].url_foto}}" width="150" alt="#" /></figure>
+                           <figure><img id="imagemprod" src="{{prod[p].url_foto}}" alt="#" /></figure>
                            <h3 >{{ prod[p].nome}}</h3>
                            <h6 class="font-weight-bold my-2">R$ {{ prod[p].preco }}</h6>
                            {% if "usuario_logado" in session and session["usuario_logado"] != "admin"%}

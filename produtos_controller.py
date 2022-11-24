@@ -145,7 +145,6 @@ def logout():
 def logar(usuario: InformacoesUsuarioSemSenha or None):
     if usuario is not None:
         session["usuario_logado"] = (usuario.login)
-
     elif "usuario_logado" in session:
         del session["usuario_logado"]
 

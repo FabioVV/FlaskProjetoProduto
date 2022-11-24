@@ -23,6 +23,9 @@
 </head>
 
 
+
+{% include 'nav.html' %}
+
 {%with messages= get_flashed_messages()%}
 {%if messages%}
 {% for msg in messages%}
@@ -31,10 +34,10 @@
 {% endif %}
 {%endwith%}
 
-{% include 'nav.html' %}
 {% block content %}
 
 {% endblock %}
+
 {% include 'footer.html' %}
 <script src="{{url_for('static',filename= 'func.js')}}"></script>
 

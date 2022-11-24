@@ -11,7 +11,7 @@
                      <div class="row">
                         <div class="col-md-6">
                            <div class="text-bg">
-                              <span>Computador e notebook</span>
+                              <span>Computadores e notebooks</span>
                               <h1>O melhor aqui.</h1>
                               <p>O melhor do mundo gamer somente aqui. O melhor do workstation somente aqui.</p>
                               <a href="/produto">Compre agora nossos produtos!</a> <a href="/ver_principal">Reserve
@@ -68,7 +68,7 @@
                      {% for p in prods%}
                      <div class="col-md-4 margin_bottom1">
                         <div class="product_box">
-                           <figure><img src="{{prods[p].url_foto}}" width="200" height="100" alt="#" /></figure>
+                           <figure><img id="imagemprod" src="{{prods[p].url_foto}}"  alt="Imagem de um produto do site" /></figure>
                            <h3>{{prods[p].nome}}</h3>
                            <form action="/produto/{{ p }}" method="get" id="verprod">
                               <button class="btn btn-secondary" style="margin-top:2rem ;" type="submit">Ver

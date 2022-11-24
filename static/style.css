@@ -1089,7 +1089,7 @@ a.a:hover{
      font-size: large;
 }
 
-#namepagepr{
+.namepagepr{
      text-decoration: overline;
 }
 
@@ -1097,12 +1097,20 @@ a.a:hover{
 
 p#msg {
      text-align: center;
-     background-color: yellow;
-     color: black;
+     background-color: rgb(0, 0, 0);
+     color: rgb(255, 255, 255);
      font-size: 2rem;
-
+     padding: 15px;
    }
 
-   body {
-     background-color: black;
-   }
+
+#imagemprod{
+     display: block;
+     width: 250px;
+     height: 220px;
+     margin: 0 auto;
+}
+
+.sair{
+     text-decoration: underline;
+}

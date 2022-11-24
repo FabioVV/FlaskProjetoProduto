@@ -1,8 +1,7 @@
 # APP CADASTRO DE PRODUTOS 
 
 
-# Transformar site em uma lojinha, (carteira, dinheiro, compra)
-# Carrinho.
+# Transformar site em uma lojinha.
 
 # Para o dia da apresentação:
 (
