@@ -52,6 +52,8 @@ def time():
 def index():
     return render_template("index.html", prods=prods)
 
+# Navbar do site ((Todos as rotas aqui.))
+
 
 @app.route("/reservar")
 def reservar():
