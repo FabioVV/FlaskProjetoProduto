@@ -1114,3 +1114,14 @@ p#msg {
 .sair{
      text-decoration: underline;
 }
+
+.two_b{
+     display: flex;
+     flex-direction: row;
+     align-items: center;;
+     justify-content: space-around;
+}
+
+.read_more.s{
+     padding: 2rem;
+}

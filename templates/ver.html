@@ -21,8 +21,14 @@
                            <p class="font-italic text-muted mb-0 small display-4">{{ produto.desc }}</p>
                            <h6 class="font-weight-bold my-2 display-3">R$ {{ produto.preco }}</h6>
                            {% if "usuario_logado" in session and not session["usuario_logado"] == "admin" %}
-                           <a class="read_more" onclick="javascript:buy()" href="#">Compre agora</a>
-                           <form method="POST" id="buying" action="/carrinho/{{ prv }}"></form>
+                           <div class="two_b">
+                              <div><a class="read_more s" onclick="javascript:buy()" href="#">Compre agora</a>
+                                 <form method="POST" id="buying" action="/carrinho/{{ prv }}"></form>
+                              </div>
+                              <div><a class="read_more" href="/produto">Retornar para tela de produtos</a></div>
+                           </div>
+
+
                            {% else %}
                            <a class="read_more" href="/login">Registre-se ou realize o login para comprar!!</a>
                            {% endif %}
