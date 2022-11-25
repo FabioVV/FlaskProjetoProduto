@@ -203,7 +203,10 @@ def remover_produto_carrinho(id_produto):
 @app.route("/carrinho/<int:id_produto>", methods=["POST"])
 @apenas_usuarios_logados
 def novo_produto_carrinho(id_produto):
-    p = {id_produto: {"nome": prods[id_produto]["nome"],
+    global codig_produto_carrinho
+    cod2 = codig_produto_carrinho
+    codig_produto_carrinho += 1
+    p = {codig_produto_carrinho: {"nome": prods[id_produto]["nome"],
          "preco": prods[id_produto]["preco"], "ano": prods[id_produto]["ano"], "desc": prods[id_produto]["desc"], "url_foto": prods[id_produto]["url_foto"]}}
     adicionar_carrinho(p)
     flash("Produto adicionado ao carrinho com sucesso.", "info")

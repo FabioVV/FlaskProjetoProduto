@@ -1,6 +1,7 @@
 from usuarios import *
 
 carrinho_produtos = {}
+codig_produto_carrinho = 0
 
 
 def adicionar_carrinho(produto):

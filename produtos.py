@@ -3,7 +3,7 @@ proximo_codigo = 10
 prods = {
     1: {"nome": "Monitor ASUS Pro AXT", "preco": 1200, "ano": 2017, "desc": "Monitor 144hz",
         "url_foto": "https://www.asus.com/media/global/products/fIeqEqPIr9BRQXa1/i3smlrxWdm40xIFT_setting_xxx_0_90_end_2000.png"},
-    2: {"nome": "RTX 3060 TI", "preco": 2300, "ano": 2020, "desc": "Placa de vídeo",
+    2: {"nome": "RTX 3060 TI", "preco": 2300, "ano": 2020, "desc": "8GB de memória, GDDR6, LHR, DLSS, Ray Tracing",
         "url_foto": "https://img.terabyteshop.com.br/produto/g/placa-de-video-winfast-rtx-3060-ti-hurricane-8gb-gddr6-256-bits_113128.jpg"},
     3: {"nome": "Alienware X15", "preco": 17500, "ano": 2022, "desc": "i9-11900H RTX 3080 FHD", "url_foto": "https://www.notebookcheck.info/uploads/tx_nbc2/Alienwarex15-R1__1_.jpg"},
     4: {"nome": "Exterminator i9", "preco": 29000, "ano": 2022, "desc": "i9-10900 Rtx 3090ti- Ddr4 128gb - M.2 2tb - Hd 8t", "url_foto": "https://http2.mlstatic.com/D_NQ_NP_768107-MLB50628298466_072022-O.webp"},
