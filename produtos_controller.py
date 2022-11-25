@@ -172,9 +172,6 @@ def novo_produto():
     flash("Produto criado com sucesso.", "info")
     return redirect("/produto")
 
-# Adicionar ao carrinho
-
-##
 
 # Essa função renderiza a tela com o formulario ara criação do produto
 
@@ -191,6 +188,8 @@ def novo_produto_form():
 def carrinho():
     return render_template("carrinho.html", car=carrinho_produtos, preco_tot=retorna_preco())
 
+# funçãp que exclui do carrinho
+
 
 @app.route("/carrinho/excluir/<int:id_produto>", methods=["POST"])
 @apenas_usuarios_logados
@@ -198,6 +197,8 @@ def remover_produto_carrinho(id_produto):
     remover_carrinho(id_produto)
     flash("Produto excluido com sucesso.", "info")
     return redirect("/carrinho")
+
+# função que adiciona no carrinho
 
 
 @app.route("/carrinho/<int:id_produto>", methods=["POST"])
