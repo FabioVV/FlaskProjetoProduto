@@ -1,9 +1,5 @@
 # APP CADASTRO DE PRODUTOS 
 
 
-# Transformar site em uma lojinha.
+# Lojinha
 
-# Para o dia da apresentação:
-(
-    
-)
