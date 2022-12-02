@@ -9,6 +9,7 @@ from flask_migrate import Migrate
 from datetime import datetime
 from flask_login import UserMixin
 from datetime import date
+from forms import UserForm, LoginForm
 import os
 
 
@@ -25,10 +26,10 @@ UPLOAD_FOLDER = 'static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 #LOGIN
-login = LoginManager()
-login.init_app(app)
-login.login_view = 'login'
-@login.user_loader
+loginm = LoginManager()
+loginm.init_app(app)
+loginm.login_view = 'login'
+@loginm.user_loader
 def load_user(userid):
     return Users.query.get(int(userid))
 
@@ -67,10 +68,16 @@ def notebook():
 
 #APP
 
-@app.route("/login")
-def tela_login():
+@app.route("/login", methods=['GET','POST'])
+def login():
+    form = LoginForm()
     return render_template("login.html")
 
+
+@app.route("/registrar", methods=['GET','POST'])
+def registrar():
+    form = UserForm()
+    return render_template("login.html")
 
 
 ##
@@ -83,6 +90,7 @@ class Users(db.Model, UserMixin):
     password_hash = db.Column(db.String(25), nullable=False)
     profile_pic = db.Column(db.String(300), nullable=True)
     date_added = db.Column(db.DateTime, default = datetime.utcnow)
+    admin = db.Column(db.Boolean, default = False, nullable=False)
 
 if __name__ == "__main__":
     app.run("0.0.0.0", port=5002, debug=True)
