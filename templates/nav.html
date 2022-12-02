@@ -35,9 +35,9 @@
                         <li class="nav-item">
                            <a class="nav-link" href="/produto">Produtos</a>
                         </li>
-                        
+                        {% if current_user.is_authenticated%}
                         <li class="nav-item">
-                           <h1 class="nav-link namepagepr">Olá, {{ session["usuario_logado"] }}!</h1>
+                           <h1 class="nav-link namepagepr">Olá, {{ current_user.name }}!</h1>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="/carrinho"><i class="fas fa-shopping-cart"></i></a>
@@ -50,7 +50,7 @@
                            <form action="{{url_for('logout')}}" id="form_logout" method="POST" style="display: none">
                            </form>
                         </li>
-                        
+                        {% elif current_user.is_authenticated and current_user.admin == True%}
                         <li class="nav-item active">
                            <a style="text-decoration: underline;" class="nav-link" href="/produto/novo">Registrar
                               novo produto</a>
@@ -64,11 +64,11 @@
                               onclick="javascript:logoutClick()"></button>
                            <form action="" id="form_logout" method="POST" style="display: none">
                            </form>
-                           
+                        {% else %}
                         <li class="nav-item d_none">
                            <a class="nav-link" href="/login">Login</a>
                         </li>
-                        
+                        {% endif %}
                      </ul>
                   </div>
                </nav>
