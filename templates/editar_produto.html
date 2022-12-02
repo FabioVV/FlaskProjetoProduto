@@ -12,28 +12,32 @@
       </div>
       <div class="row">
         <div class="col-md-10 offset-md-1">
-          <form method="post" id="request" class="main_form"
-            action="">
+          <form method="POST" id="request" class="main_form">
             <div class="row">
               <div class="col-md-12 ">
-                nome prod
+                {{ form.hidden_tag() }}
+                {{form.name.label(class="col-form-label-lg")}}
+                {{form.name(class="contactus")}}
               </div>
               <div class="col-md-12">
-                preco prod
+                {{form.price.label(class="col-form-label-lg")}}
+                {{form.price(class="contactus")}}
               </div>
               <div class="col-md-12">
-                ana fabrica
+                {{form.category.label(class="col-form-label-lg")}}
+                {{form.category(class="contactus")}}
               </div>
               <div class="col-md-12">
-                desricao
+                {{form.desc.label(class="col-form-label-lg")}}
+                {{form.desc(class="contactus")}}
               </div>
               <div class="col-md-12">
-                imagem
+                # IMAGEM DO PRODUTO EM BREVE
               </div>
               <div>
                 <div class="titlepage">
                   <p class="mb-0 col-md-4">
-                    finalizao edicao
+                    {{form.submit(class="send_btn")}}
                   </p>
                 </div>
               </div>

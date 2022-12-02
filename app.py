@@ -8,7 +8,7 @@ from flask_migrate import Migrate
 from datetime import datetime
 from flask_login import UserMixin
 from datetime import date
-from forms import UserForm, LoginForm, ProductsForm
+from forms import UserForm, LoginForm, ProductsForm, UpdateProduct
 import os
 
 
@@ -90,7 +90,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash("You have been logged out!")
+    flash("Você saiu da sua conta.")
     return redirect(url_for('login'))
 
 
@@ -137,9 +137,51 @@ def adicionar_produto():
         db.session.add(prod)
         db.session.commit()
         flash("Produto registrado com sucesso.")
-    else:
-        flash("Algum erro ocorreu com seu formulário.")
+
     return render_template('registrar_produto.html', form = form)
+
+
+@app.route('/delete-product/<int:id>',methods=['POST'])
+@login_required
+def delete_product(id:int):
+    product = Products.query.get_or_404(id)
+    try:
+        if current_user.admin == True:
+            db.session.delete(product)
+            db.session.commit()
+            flash("Produto excluido.")
+            return redirect(url_for('produtos'))
+        else:
+            flash("Permissão negada.")
+            return redirect(url_for('produtos'))
+    except:
+        flash("Erro ao excluir produto.")
+        return redirect(url_for('produtos'))
+
+@app.route('/update-product/<int:id>',methods=['GET','POST'])
+@login_required
+def update_product(id:int):
+    form = UpdateProduct()
+    product = Products.query.get_or_404(id)
+    if form.validate_on_submit():
+        if current_user.admin == True:
+            product.name = form.name.data
+            product.price = form.price.data
+            product.category = form.category.data
+            product.desc = form.desc.data
+
+            db.session.add(product)
+            db.session.commit()
+            flash("Produto editado com sucesso!")
+            return redirect(url_for('produtos'))
+        else:
+            flash("Permissão negada.")
+    product.name = ''
+    product.price = ''
+    product.category = ''
+    product.desc = ''
+    return render_template('editar_produto.html',form = form)
+
 ##
 
 class Users(db.Model, UserMixin):
@@ -159,7 +201,7 @@ class Products(db.Model):
     name = db.Column(db.String(70), nullable=False)
     desc = db.Column(db.String(100), nullable=False)
     category = db.Column(db.String(75), nullable=False)
-    #produtc_pic = db.Column(db.String(300), nullable = True)
+    produtc_pic = db.Column(db.String(300), nullable = True)
     price = db.Column(db.Float, nullable=False)
     date_added = db.Column(db.DateTime, default = datetime.utcnow)
     date_modified = db.Column(db.DateTime, default = datetime.utcnow)
