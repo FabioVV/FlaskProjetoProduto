@@ -75,7 +75,7 @@ def login():
     form = LoginForm()
 
     if form.validate_on_submit():
-        user = Users.query.get_or_404(email = form.email.data).first()
+        user = Users.query.filter_by(email = form.email.data).first()
         #userlogin = Users.query.get_or_404(username = form.username.data).first()
         if user:
             if check_password_hash(user.password_hash, form.password.data):
@@ -84,19 +84,25 @@ def login():
                 return redirect(url_for("index"))
             else:
                 flash("Senha errada.")
-                return redirect(url_for("login"))
         else:
             flash("Email inexistente.")
-            return redirect(url_for("index"))
     return render_template("login.html", form = form)
+
+@app.route("/logout", methods=['GET','POST'])
+@login_required
+def logout():
+    logout_user()
+    flash("You have been logged out!")
+    return redirect(url_for('login'))
 
 
 @app.route("/registrar", methods=['GET','POST'])
 def registrar():
     form = UserForm()
     user = Users.query.filter_by(email = form.email.data).first()
+    usern = Users.query.filter_by(email = form.username.data).first()
     if form.validate_on_submit():
-        if user is None and user.username is None:
+        if user is None and usern is None:
             name = form.name.data
             username = form.username.data
             email = form.email.data
@@ -118,10 +124,10 @@ def registrar():
 
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
-    username = db.Column(db.String(25), nullable=False, unique= True)
-    name = db.Column(db.String(25), nullable=False)
-    email = db.Column(db.String(25), nullable=False, unique= True)
-    password_hash = db.Column(db.String(25), nullable=False)
+    username = db.Column(db.String(70), nullable=False, unique= True)
+    name = db.Column(db.String(70), nullable=False)
+    email = db.Column(db.String(75), nullable=False, unique= True)
+    password_hash = db.Column(db.String(300), nullable=False)
     profile_pic = db.Column(db.String(300), nullable=True)
     date_added = db.Column(db.DateTime, default = datetime.utcnow)
     admin = db.Column(db.Boolean, default = False)
