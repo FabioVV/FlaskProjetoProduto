@@ -14,25 +14,21 @@
             <div class="col-md-12">
                <div class="our_products">
                   <div class="row">
-                     {% for p in prod %}
+                     {% for p in prods %}
                      <div class="col-md-4 margin_bottom1">
                         <div class="product_box">
-                           <figure><img id="imagemprod" src="{{prod[p].url_foto}}" alt="#" /></figure>
-                           <h3 >{{ prod[p].nome}}</h3>
-                           <h6 class="font-weight-bold my-2">R$ {{ prod[p].preco }}</h6>
-                           {% if "usuario_logado" in session and session["usuario_logado"] != "admin"%}
+                           <figure><img id="imagemprod" src="" alt="Imagem do produto" /></figure>
+                           <h3 >{{ p.name }}</h3>
+                           <h6 class="font-weight-bold my-2">R$ {{ p.price }}</h6>
+                           {% if current_user.is_authenticated and current_user.admin == False%}
                            <li class="list-inline-item m-0">
-                              <form method="POST" action="/carrinho/{{ p }}"><button class="btn btn-success"
-                                    style="margin-bottom:1rem ;" type="submit">Adicionar no carrinho</button></form>
+                              adicionar ao carrinho
                            </li>
                            {% endif %}
                            <li class="list-inline-item m-0">
-                              <form action="/produto/{{ p }}" method="get" id="verprod">
-                                 <button class="btn btn-dark" style="margin-bottom:1rem ;"
-                                    type="submit">ver</button>
-                              </form>
+                              ver produto
                            </li>
-                           {% if session["usuario_logado"] == "admin" %}
+                           {% if current_user.admin == True %}
                            <li class="list-inline-item m-0">
                               <form method="POST" action="/produto/excluir/{{ p }}"><button class="btn btn-danger"
                                     style="margin-bottom:1rem ;" type="submit">Excluir</button></form>

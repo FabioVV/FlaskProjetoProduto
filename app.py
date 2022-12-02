@@ -119,6 +119,10 @@ def registrar():
         return redirect(url_for('login'))
     return render_template("novo_user.html", form = form)
 
+@app.route("/produtos")
+def produtos():
+    prods = Products.query.order_by(Products.date_added)
+    return render_template('todos_produtos.html', prods = prods)
 
 ##
 
@@ -130,7 +134,7 @@ class Users(db.Model, UserMixin):
     password_hash = db.Column(db.String(300), nullable=False)
     profile_pic = db.Column(db.String(300), nullable=True)
     date_added = db.Column(db.DateTime, default = datetime.utcnow)
-    admin = db.Column(db.Boolean, default = True) #LEMBRAR DE MUNDAR ISSO AQUI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    admin = db.Column(db.Boolean, default = False) #LEMBRAR DE MUNDAR ISSO AQUI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     orders = db.relationship('OrderDetails', backref='order_details')
     cart = db.relationship('Cart', backref='cart_products')
 
