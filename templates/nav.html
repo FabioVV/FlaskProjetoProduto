@@ -35,7 +35,7 @@
                         <li class="nav-item">
                            <a class="nav-link" href="/produto">Produtos</a>
                         </li>
-                        {% if "usuario_logado" in session and session["usuario_logado"] != "admin"%}
+                        
                         <li class="nav-item">
                            <h1 class="nav-link namepagepr">Olá, {{ session["usuario_logado"] }}!</h1>
                         </li>
@@ -47,28 +47,28 @@
                            </a>
                            <button style="display: none" class="btn btn-secondary" type="button"
                               onclick="javascript:logoutClick()"></button>
-                           <form action="{{ url_for('logout') }}" id="form_logout" method="POST" style="display: none">
+                           <form action="" id="form_logout" method="POST" style="display: none">
                            </form>
                         </li>
-                        {% elif (("usuario_logado" in session) and session["usuario_logado"] == "admin") %}
+                        
                         <li class="nav-item active">
                            <a style="text-decoration: underline;" class="nav-link" href="/produto/novo">Registrar
                               novo produto</a>
                         </li>
                         <li class="nav-item">
-                           <h1 class="nav-link namepagepr">Olá, {{ session["usuario_logado"] }}!</h1>
+                           <h1 class="nav-link namepagepr">Olá, !</h1>
                         </li>
                         <li class="nav-item d_none">
                            <a onclick="javascript:logout()" class="nav-link" href="#"><span class="sair">Sair</span></a>
                            <button style="display: none" class="btn btn-secondary" type="button"
                               onclick="javascript:logoutClick()"></button>
-                           <form action="{{ url_for('logout') }}" id="form_logout" method="POST" style="display: none">
+                           <form action="" id="form_logout" method="POST" style="display: none">
                            </form>
-                           {% else %}
+                           
                         <li class="nav-item d_none">
                            <a class="nav-link" href="/login">Login</a>
                         </li>
-                        {% endif %}
+                        
                      </ul>
                   </div>
                </nav>

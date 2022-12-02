@@ -5,62 +5,37 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          {% if id_produto != -1 %}
-          <div class="titlepage">
-            <h2>Faça a edição do produto.</h2>
-          </div>
-          {% else %}
           <div class="titlepage">
             <h2>Faça o cadastro do produto.</h2>
           </div>
-          {% endif %}
         </div>
       </div>
       <div class="row">
         <div class="col-md-10 offset-md-1">
           <form method="post" id="request" class="main_form"
-            action="{% if id_produto != -1 %}/produto/editar/{{id_produto}}{% else %}/produto/novo{% endif %}">
+            action="">
             <div class="row">
-              {% if id_produto != -1 %}
               <div class="col-md-12 ">
-                <input type="text" id="cod" class="contactus" value="{{id_produto}}" readonly>
-              </div>
-              {% endif %}
-              <div class="col-md-12 ">
-                <input type="text" name="nome" id="nome" class="contactus" placeholder="Nome do produto"
-                  value="{{prod.nome}}" required>
+                nome prod
               </div>
               <div class="col-md-12">
-                <input type="number" name="preco" id="preco" class="contactus" placeholder="Preço do produto"
-                  value="{{prod.preco}}" required>
+                preco prod
               </div>
               <div class="col-md-12">
-                <input type="number" name="ano" id="ano" required class="contactus"
-                  placeholder="Ano de fabricação do produto" value="
-                      {{prod.ano}}">
+                ana fabrica
               </div>
               <div class="col-md-12">
-                <input type="text" name="desc" id="desc" required class="contactus" placeholder="Descrição do produto"
-                  value="{{prod.desc}}">
+                desricao
               </div>
               <div class="col-md-12">
-                <input type="text" name="url_foto" id="url_foto" required class="contactus"
-                  placeholder="URL da imagem do produto" value="{{prod.url_foto}}">
+                imagem
               </div>
               <div>
-                {% if id_produto != -1 %}
                 <div class="titlepage">
                   <p class="mb-0 col-md-4">
-                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Finalizar edição produto</button>
+                    cadastrar prod
                   </p>
                 </div>
-                {% else %}
-                <div class="titlepage">
-                  <p class="mb-0 col-md-4">
-                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Cadastrar produto</button>
-                  </p>
-                </div>
-                {% endif %}
               </div>
             </div>
           </form>
