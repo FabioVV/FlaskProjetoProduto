@@ -130,7 +130,34 @@ class Users(db.Model, UserMixin):
     password_hash = db.Column(db.String(300), nullable=False)
     profile_pic = db.Column(db.String(300), nullable=True)
     date_added = db.Column(db.DateTime, default = datetime.utcnow)
-    admin = db.Column(db.Boolean, default = False)
+    admin = db.Column(db.Boolean, default = True) #LEMBRAR DE MUNDAR ISSO AQUI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    orders = db.relationship('OrderDetails', backref='order_details')
+    cart = db.relationship('Cart', backref='cart_products')
+
+class Products(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(70), nullable=False)
+    desc = db.Column(db.String(100), nullable=False)
+    category = db.Column(db.String(75), nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    date_added = db.Column(db.DateTime, default = datetime.utcnow)
+    date_modified = db.Column(db.DateTime, default = datetime.utcnow)
+    
+class Cart(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    name = db.Column(db.String(70), nullable=False)
+    total = db.Column(db.Float, nullable=False, default= 0.00)
+    date_added = db.Column(db.DateTime, default = datetime.utcnow)
+
+
+class OrderDetails(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    total = db.Column(db.Float, nullable=False)
+    date_added = db.Column(db.DateTime, default = datetime.utcnow)
+    
+    
 
 if __name__ == "__main__":
     app.run("0.0.0.0", port=5002, debug=True)
