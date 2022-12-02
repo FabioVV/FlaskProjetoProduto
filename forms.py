@@ -12,14 +12,14 @@ class UserForm(FlaskForm):
     email = EmailField("Email", validators=[DataRequired()])
     foto_perfil = FileField("Imagem de perfil")
     password_hash = PasswordField("Senha", validators=[DataRequired(), equal_to('password_hash2', message="As duas senhas devem ser iguais!")])
-    password_hash2 = PasswordField("Senha", validators=[DataRequired()])
+    password_hash2 = PasswordField("Senha novamente", validators=[DataRequired()])
     submit = SubmitField("Crian conta")
 
 
 class LoginForm(FlaskForm):
     username = StringField("Usuário", validators=[DataRequired()])
     email = EmailField("Email", validators=[DataRequired()])
-    password_hash = PasswordField("Senha", validators=[DataRequired()])
+    password = PasswordField("Senha", validators=[DataRequired()])
     submit = SubmitField("Entrar")
 
 

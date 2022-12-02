@@ -41,7 +41,9 @@ def index():
     return render_template("index.html")
 
 ##Checkout
+
 @app.route("/checkout")
+@login_required
 def time():
     return render_template("checkout.html")
 
@@ -71,13 +73,28 @@ def notebook():
 @app.route("/login", methods=['GET','POST'])
 def login():
     form = LoginForm()
-    return render_template("login.html")
+
+    if form.validate_on_submit():
+        user = Users.query.get_or_404(email = form.email.data).first()
+        #userlogin = Users.query.get_or_404(username = form.username.data).first()
+        if user:
+            if check_password_hash(user.password_hash, form.password.data):
+                login_user(user)
+                flash("Logado com sucesso!")
+                return redirect(url_for("index"))
+            else:
+                flash("Senha errada.")
+                return redirect(url_for("login"))
+        else:
+            flash("Email inexistente.")
+            return redirect(url_for("index"))
+    return render_template("login.html", form = form)
 
 
 @app.route("/registrar", methods=['GET','POST'])
 def registrar():
     form = UserForm()
-    return render_template("login.html")
+    return render_template("novo_user.html", form = form)
 
 
 ##
@@ -90,7 +107,7 @@ class Users(db.Model, UserMixin):
     password_hash = db.Column(db.String(25), nullable=False)
     profile_pic = db.Column(db.String(300), nullable=True)
     date_added = db.Column(db.DateTime, default = datetime.utcnow)
-    admin = db.Column(db.Boolean, default = False, nullable=False)
+    admin = db.Column(db.Boolean, default = False)
 
 if __name__ == "__main__":
     app.run("0.0.0.0", port=5002, debug=True)

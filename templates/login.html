@@ -16,18 +16,20 @@
           <form id="request" class="main_form" action="" method="POST">
             <div class="row">
               <div class="col-md-12 ">
-                email
+                {{ form.email.label(class="col-form-label-lg") }}
+                {{ form.email(class="contactus") }}
               </div>
               <div class="col-md-12">
-                senha
+                {{ form.password.label(class="col-form-label-lg") }} 
+                {{ form.password(class="contactus") }} 
               </div>
               <div class="col-md-12">
-                botao logar
+                {{form.submit(class="send_btn")}}
               </div>
               <div>
                 <p class="mb-0 col-md-4">
                   Não possui uma conta?
-                  <a href="" class="text-white-50 fw-bold">Cadastre-se!</a>
+                  <a href="{{ url_for('registrar') }}" class="text-white-50 fw-bold">Cadastre-se!</a>
                 </p>
               </div>
             </div>
