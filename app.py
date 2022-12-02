@@ -94,7 +94,7 @@ def login():
 @app.route("/registrar", methods=['GET','POST'])
 def registrar():
     form = UserForm()
-    user = Users.query.get_or_404(email = form.email.data)
+    user = Users.query.filter_by(email = form.email.data).first()
     if form.validate_on_submit():
         if user is None and user.username is None:
             name = form.name.data
