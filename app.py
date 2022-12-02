@@ -94,6 +94,23 @@ def login():
 @app.route("/registrar", methods=['GET','POST'])
 def registrar():
     form = UserForm()
+    user = Users.query.get_or_404(email = form.email.data)
+    if form.validate_on_submit():
+        if user is None and user.username is None:
+            name = form.name.data
+            username = form.username.data
+            email = form.email.data
+            passwordha = generate_password_hash(form.password_hash.data, 'sha256')
+            new_user = Users(name = name, username = username, email = email, password_hash = passwordha)
+            db.session.add(new_user)
+            db.session.commit()
+
+        name = ''
+        username = ''
+        email = ''
+        passwordha = ''
+        flash("Conta criada com sucesso!")
+        return redirect(url_for('login'))
     return render_template("novo_user.html", form = form)
 
 
