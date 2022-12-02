@@ -53,7 +53,7 @@
                         {% endif%}
                         {% if current_user.admin == True %}
                         <li class="nav-item active">
-                           <a style="text-decoration: underline;" class="nav-link" href="/produto/novo">Registrar
+                           <a style="text-decoration: underline;" class="nav-link" href="{{url_for('adicionar_produto')}}">Registrar
                               novo produto</a>
                         </li>
                         <li class="nav-item">

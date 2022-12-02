@@ -30,11 +30,11 @@
                            </li>
                            {% if current_user.admin == True %}
                            <li class="list-inline-item m-0">
-                              <form method="POST" action="/produto/excluir/{{ p }}"><button class="btn btn-danger"
+                              <form method="POST" action=""><button class="btn btn-danger"
                                     style="margin-bottom:1rem ;" type="submit">Excluir</button></form>
                            </li>
                            <li class="list-inline-item m-0">
-                              <form method="GET" action="/produto/editar/{{ p }}"><button class="btn btn-secondary"
+                              <form method="POST" action=""><button class="btn btn-secondary"
                                     style="margin-bottom:1rem ;" type="submit">Editar</button></form>
                            </li>
                            {% endif %}

@@ -1,4 +1,3 @@
-
 from flask import (Flask, flash, redirect, render_template, request, url_for)
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
@@ -9,7 +8,7 @@ from flask_migrate import Migrate
 from datetime import datetime
 from flask_login import UserMixin
 from datetime import date
-from forms import UserForm, LoginForm
+from forms import UserForm, LoginForm, ProductsForm
 import os
 
 
@@ -73,7 +72,6 @@ def notebook():
 @app.route("/login", methods=['GET','POST'])
 def login():
     form = LoginForm()
-
     if form.validate_on_submit():
         user = Users.query.filter_by(email = form.email.data).first()
         #userlogin = Users.query.get_or_404(username = form.username.data).first()
@@ -124,6 +122,24 @@ def produtos():
     prods = Products.query.order_by(Products.date_added)
     return render_template('todos_produtos.html', prods = prods)
 
+@app.route("/add-product", methods=['GET','POST'])
+@login_required
+def adicionar_produto():
+    form = ProductsForm()
+
+    if form.validate_on_submit():
+        prod = Products(name = form.name.data, desc = form.desc.data, category = form.category.data, price = form.price.data)
+        name = ''
+        desc = ''
+        category = ''
+        price = 0
+
+        db.session.add(prod)
+        db.session.commit()
+        flash("Produto registrado com sucesso.")
+    else:
+        flash("Algum erro ocorreu com seu formulário.")
+    return render_template('registrar_produto.html', form = form)
 ##
 
 class Users(db.Model, UserMixin):
@@ -134,7 +150,7 @@ class Users(db.Model, UserMixin):
     password_hash = db.Column(db.String(300), nullable=False)
     profile_pic = db.Column(db.String(300), nullable=True)
     date_added = db.Column(db.DateTime, default = datetime.utcnow)
-    admin = db.Column(db.Boolean, default = False) #LEMBRAR DE MUNDAR ISSO AQUI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    admin = db.Column(db.Boolean, default = False) 
     orders = db.relationship('OrderDetails', backref='order_details')
     cart = db.relationship('Cart', backref='cart_products')
 
@@ -143,6 +159,7 @@ class Products(db.Model):
     name = db.Column(db.String(70), nullable=False)
     desc = db.Column(db.String(100), nullable=False)
     category = db.Column(db.String(75), nullable=False)
+    #produtc_pic = db.Column(db.String(300), nullable = True)
     price = db.Column(db.Float, nullable=False)
     date_added = db.Column(db.DateTime, default = datetime.utcnow)
     date_modified = db.Column(db.DateTime, default = datetime.utcnow)
