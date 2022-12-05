@@ -12,7 +12,7 @@
       </div>
       <div class="row">
         <div class="col-md-10 offset-md-1">
-          <form method="POST" id="request" class="main_form">
+          <form method="POST" id="request" class="main_form" enctype="multipart/form-data">
             <div class="row">
               <div class="col-md-12 ">
                 {{ form.hidden_tag() }}
@@ -32,7 +32,8 @@
                 {{form.desc(class="contactus")}}
               </div>
               <div class="col-md-12">
-                # IMAGEM DO PRODUTO EM BREVE
+                {{ form.produtc_pic.label(class="col-form-label-lg") }}
+                {{ form.produtc_pic(class="contactus") }}
               </div>
               <div>
                 <div class="titlepage">

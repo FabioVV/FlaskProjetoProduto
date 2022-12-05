@@ -14,19 +14,21 @@
             <div class="col-md-12">
                <div class="our_products">
                   <div class="row">
-                     {% for p in prods %}
+                     {% for p in prods %} 
                      <div class="col-md-4 margin_bottom1">
                         <div class="product_box">
-                           <figure><img id="imagemprod" src="" alt="Imagem do produto" /></figure>
+                           <figure><img id="imagemprod" src="{{ url_for('static', filename='prod_images/' + p.produtc_pic)}}" alt="Imagem do produto" /></figure>
                            <h3 >{{ p.name }}</h3>
                            <h6 class="font-weight-bold my-2">R$ {{ p.price }}</h6>
                            {% if current_user.is_authenticated and current_user.admin == False%}
                            <li class="list-inline-item m-0">
-                              adicionar ao carrinho
+                              <form method="POST" action=""><button class="btn btn-danger"
+                                 style="margin-bottom:1rem ;" type="submit">Adicionar ao carrinho</button></form>
                            </li>
                            {% endif %}
                            <li class="list-inline-item m-0">
-                              ver produto
+                              <form method="POST" action=""><button class="btn btn-danger"
+                                 style="margin-bottom:1rem ;" type="submit">Ver</button></form>
                            </li>
                            {% if current_user.admin == True %}
                            <li class="list-inline-item m-0">

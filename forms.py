@@ -19,23 +19,22 @@ class ProductsForm(FlaskForm):
     name = StringField("Nome do produto", validators=[DataRequired()])
     desc = StringField("Descrição do produto", validators=[DataRequired()])
     category = StringField("Categoria do produto", validators=[DataRequired()])
+    produtc_pic = FileField("Imagem do produto")
     price = FloatField("Preço do produto", validators=[DataRequired()])
     submit = SubmitField("Registrar produto")
-
 
 class UpdateProduct(FlaskForm):
     name = StringField("Nome do produto", validators=[DataRequired()])
     desc = StringField("Descrição do produto", validators=[DataRequired()])
     category = StringField("Categoria do produto", validators=[DataRequired()])
+    produtc_pic = FileField("Imagem do produto")
     price = FloatField("Preço do produto", validators=[DataRequired()])
     submit = SubmitField("Finalizar edição do produto")
-
 
 class LoginForm(FlaskForm):
     email = EmailField("Email", validators=[DataRequired()])
     password = PasswordField("Senha", validators=[DataRequired()])
     submit = SubmitField("Entrar")
-
 
 class SearchForm(FlaskForm):
     searched = StringField("Campo de pesquisa", validators=[DataRequired()])

@@ -21,7 +21,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app,db)
 
 #IMAGES
-UPLOAD_FOLDER = 'static'
+UPLOAD_FOLDER = 'static/prod_images'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 #LOGIN
@@ -128,7 +128,14 @@ def adicionar_produto():
     form = ProductsForm()
 
     if form.validate_on_submit():
-        prod = Products(name = form.name.data, desc = form.desc.data, category = form.category.data, price = form.price.data)
+        
+        pic = request.files['produtc_pic']
+        picfilename = secure_filename(pic.filename)
+        picname = str(uuid.uuid1()) + "_" + picfilename
+        pic = picname
+        saver = request.files['produtc_pic']
+        saver.save(os.path.join(app.config['UPLOAD_FOLDER'],picname))
+        prod = Products(name = form.name.data, desc = form.desc.data, category = form.category.data, price = form.price.data, produtc_pic = pic)
         name = ''
         desc = ''
         category = ''
@@ -169,18 +176,24 @@ def update_product(id:int):
             product.price = form.price.data
             product.category = form.category.data
             product.desc = form.desc.data
+            if request.files['produtc_pic']:
+                product.produtc_pic = request.files['produtc_pic']
+                picfilename = secure_filename(product.produtc_pic.filename)
+                picname = str(uuid.uuid1()) + "_" + picfilename
+                product.produtc_pic = picname
+                saver = request.files['produtc_pic']
+                saver.save(os.path.join(app.config['UPLOAD_FOLDER'],picname))
 
-            db.session.add(product)
-            db.session.commit()
-            flash("Produto editado com sucesso!")
-            return redirect(url_for('produtos'))
+                db.session.commit()
+                flash("Produto editado com sucesso!")
+                return redirect(url_for('produtos'))
+            else:
+                db.session.commit()
+                flash("Produto editado com sucesso!")
+                return redirect(url_for('produtos'))
         else:
             flash("Permissão negada.")
-    product.name = ''
-    product.price = ''
-    product.category = ''
-    product.desc = ''
-    return render_template('editar_produto.html',form = form)
+    return render_template('editar_produto.html',form = form, product = product)
 
 ##
 
