@@ -37,7 +37,8 @@ def load_user(userid):
 #ROUTES
 @app.route("/")
 def index():
-    return render_template("index.html")
+    prods = Products.query.order_by(Products.date_added)
+    return render_template("index.html",prods=prods)
 
 ##Checkout
 
