@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 import uuid as uuid
 from flask_login import LoginManager, login_required, logout_user, current_user, login_user
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql import func
 from flask_migrate import Migrate
 from datetime import datetime
 from flask_login import UserMixin
@@ -201,6 +202,38 @@ def ver_produto(id:int):
     produto = Products.query.get_or_404(id)
     return render_template('ver.html', produto = produto)
 
+@app.route('/cart')
+def cart():
+    prods = Cart.query.order_by(Cart.date_added)
+    return render_template('carrinho.html', cart = prods)
+
+@app.route('/cart-add/<int:id>', methods=['POST'])
+def add_to_cart(id:int):
+    produto = Products.query.get_or_404(id)
+    try:
+        cart = Cart(user_id = current_user.id, name = produto.name, price = produto.price, produtc_pic = produto.produtc_pic, total = 0)
+        db.session.add(cart)
+        db.session.commit()
+        flash('Item added to the cart.')
+        return redirect(url_for('produtos'))
+    except:
+        flash('Something went wrong.')
+        return redirect(url_for('index'))
+
+
+@app.route('/delete-product-cart/<int:id>',methods=['POST'])
+@login_required
+def delete_product_cart(id:int):
+    product = Cart.query.get_or_404(id)
+    try:
+        db.session.delete(product)
+        db.session.commit()
+        flash("Produto excluido.")
+        return redirect(url_for('cart'))
+    except:
+        flash("Erro ao excluir produto.")
+        return redirect(url_for('cart'))
+
 ##
 
 class Users(db.Model, UserMixin):
@@ -224,21 +257,6 @@ class Products(db.Model):
     price = db.Column(db.Float, nullable=False)
     date_added = db.Column(db.DateTime, default = datetime.utcnow)
     date_modified = db.Column(db.DateTime, default = datetime.utcnow)
-    
-class Cart(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    name = db.Column(db.String(70), nullable=False)
-    total = db.Column(db.Float, nullable=False, default= 0.00)
-    date_added = db.Column(db.DateTime, default = datetime.utcnow)
-
-
-class OrderDetails(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    total = db.Column(db.Float, nullable=False)
-    date_added = db.Column(db.DateTime, default = datetime.utcnow)
-    
     
 
 if __name__ == "__main__":

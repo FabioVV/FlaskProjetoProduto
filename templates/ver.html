@@ -24,7 +24,7 @@
                            <div class="two_b">
                               <div>
                                  <a class="read_more s" onclick="javascript:buy()">Compre agora</a>
-                                 <form method="POST" id="buying" action=""></form>
+                                 <form method="POST" id="buying" action="/cart-add/{{produto.id}}"></form>
                               </div>
                               <div>
                                  <a class="read_more" href="{{url_for('produtos')}}">Retornar para tela de produtos</a></div>
@@ -38,10 +38,6 @@
                               </div>
                               {%endif%}
                            </div>
-
-                           
-                           
-                           
                         </div>
                      </div>
                   </div>

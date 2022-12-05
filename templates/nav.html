@@ -40,7 +40,7 @@
                            <h1 class="nav-link namepagepr">Olá, {{ current_user.name }}!</h1>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="/carrinho"><i class="fas fa-shopping-cart"></i></a>
+                           <a class="nav-link" href="{{url_for('cart')}}"><i class="fas fa-shopping-cart"></i></a>
                         </li>
                         <li class="nav-item d_none">
                            <a onclick="javascript:logout()" class="nav-link" href="#"><span class="sair">Sair</span>

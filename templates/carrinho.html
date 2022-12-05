@@ -7,8 +7,8 @@
          <div class="row">
             <div class="col-md-12">
                <div class="titlepage">
-                  <h2>Total do seu carrinho</h2>
-                  <h3 class="display-4">R$ </h3>
+                  <h2>Carrinho</h2>
+                  <h3 class="display-2">Total a pagar: R$ {{cart.total}}</h3>
                </div>
             </div>
          </div>
@@ -16,37 +16,37 @@
             <div class="col-md-12">
                <div class="our_products">
                   <div class="row">
-                     
+                     {%for p in cart%}
                      <div class="col-md-4 margin_bottom1">
+                        
                         <div class="product_box">
-                           <figure><img src="" width="200" height="100" alt="Imagem de um produto" /></figure>
-                           <h3></h3>
-                           <p class="font-italic mb-0 small"></p>
-                           <h6 class="font-weight-bold my-2">R$ </h6>
-                  
-                           <h6 id="desconto" class="font-weight-bold my-2">40% de desconto nesse computador!</h6>
-                           
+                           <figure><img src="{{url_for('static', filename='/prod_images/' + p.produtc_pic)}}" alt="Imagem de um produto" /></figure>
+                           <h3>{{p.name}}</h3>
+                           <h6 class="font-weight-bold my-2">R$ {{p.price}}</h6>
+
                            <li class="list-inline-item m-0">
-                              <form action="/produto/{{ p }}" method="get" id="verprod">
+                              <form action="/ver/{{ p }}" method="get" id="verprod">
                                  <button class="btn btn-dark" style="margin-bottom:1rem ;"
                                     type="submit">ver</button>
                               </form>
                            </li>
                            <li class="list-inline-item m-0">
-                              <form method="POST" action=""><button class="btn btn-danger"
+                              <form method="POST" action="/delete-product-cart/{{p.id}}"><button class="btn btn-warning"
                                     style="margin-bottom:1rem ;" type="submit">Remover</button></form>
                            </li>
                         </div>
                      </div>
+                     {%endfor%}
                   </div>
-                  
+                  {% if current_user.is_authenticated %}
                   <div class="two_b">
                      <div><a class="read_more s" href="">Finalizar compra</a></div>
                      <div><a class="read_more" href="{{url_for('produtos')}}">Retornar para tela de produtos</a></div>
                   </div>
-
+                  {%else%}
+                  <a class="read_more" href="{{url_for('produtos')}}">Retornar para tela de produtos</a>
                   <span class="read_more">Adicione produtos ao seu carrinho!</span>
-                  
+                  {%endif%}
                </div>
             </div>
          </div>
