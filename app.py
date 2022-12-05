@@ -196,6 +196,11 @@ def update_product(id:int):
             flash("Permissão negada.")
     return render_template('editar_produto.html',form = form, product = product)
 
+@app.route('/ver/<int:id>')
+def ver_produto(id:int):
+    produto = Products.query.get_or_404(id)
+    return render_template('ver.html', produto = produto)
+
 ##
 
 class Users(db.Model, UserMixin):
