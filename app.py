@@ -15,6 +15,8 @@ import os
 
 app = Flask(__name__)
 app.secret_key = "chavesecreta"
+app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_TYPE'] = "filesystem"
 
 #DATABASE
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:guerra998@localhost/cla'
@@ -204,35 +206,17 @@ def ver_produto(id:int):
 
 @app.route('/cart')
 def cart():
-    prods = Cart.query.order_by(Cart.date_added)
-    return render_template('carrinho.html', cart = prods)
+    return render_template('carrinho.html')
 
 @app.route('/cart-add/<int:id>', methods=['POST'])
 def add_to_cart(id:int):
-    produto = Products.query.get_or_404(id)
-    try:
-        cart = Cart(user_id = current_user.id, name = produto.name, price = produto.price, produtc_pic = produto.produtc_pic, total = 0)
-        db.session.add(cart)
-        db.session.commit()
-        flash('Item added to the cart.')
-        return redirect(url_for('produtos'))
-    except:
-        flash('Something went wrong.')
-        return redirect(url_for('index'))
+    pass
 
 
 @app.route('/delete-product-cart/<int:id>',methods=['POST'])
 @login_required
 def delete_product_cart(id:int):
-    product = Cart.query.get_or_404(id)
-    try:
-        db.session.delete(product)
-        db.session.commit()
-        flash("Produto excluido.")
-        return redirect(url_for('cart'))
-    except:
-        flash("Erro ao excluir produto.")
-        return redirect(url_for('cart'))
+    pass
 
 ##
 
@@ -245,8 +229,6 @@ class Users(db.Model, UserMixin):
     profile_pic = db.Column(db.String(300), nullable=True)
     date_added = db.Column(db.DateTime, default = datetime.utcnow)
     admin = db.Column(db.Boolean, default = False) 
-    orders = db.relationship('OrderDetails', backref='order_details')
-    cart = db.relationship('Cart', backref='cart_products')
 
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key = True)
