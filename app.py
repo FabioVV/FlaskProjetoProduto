@@ -1,4 +1,4 @@
-from flask import (Flask, flash, redirect, render_template, request, url_for)
+from flask import (Flask, flash, redirect, render_template, request, url_for, session)
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import uuid as uuid
@@ -205,18 +205,42 @@ def ver_produto(id:int):
     return render_template('ver.html', produto = produto)
 
 @app.route('/cart', methods=['GET','POST'])
+@login_required
 def cart():
-    return render_template('carrinho.html')
+    
+    if 'cart' not in session:
+        session['cart'] = []
+
+    if request.method == 'POST':
+        id = request.form.get('id')
+        session['cart'].append(id)
+        return redirect('/cart')
+        
+    carrinho =  Products.query.filter_by(id)
+        
+    return render_template('carrinho.html', cart = carrinho)
+    
 
 #@app.route('/cart-add/<int:id>', methods=['POST'])
 #def add_to_cart(id:int):
 #    pass
 
 
-@app.route('/delete-product-cart/<int:id>',methods=['POST'])
+@app.route('/delete-product-cart',methods=['POST'])
 @login_required
-def delete_product_cart(id:int):
-    pass
+def delete_product_cart():
+
+    id = request.form.get('id')
+    if id:
+        for x in session['cart']:
+            if id == x:
+                session['cart'].remove(x)
+        return redirect('/cart')
+
+    carrinho = []
+    for id in session['cart']:
+        carrinho.append(Products.query.get(id))
+    return render_template('carrinho.html', cart = carrinho)
 
 ##
 

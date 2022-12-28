@@ -31,8 +31,12 @@
                               </form>
                            </li>
                            <li class="list-inline-item m-0">
-                              <form method="POST" action="/delete-product-cart/{{p.id}}"><button class="btn btn-warning"
-                                    style="margin-bottom:1rem ;" type="submit">Remover</button></form>
+                              <form method="POST" action="/delete-product-cart">
+                                 <input name="id" type="hidden" value={{p.id}}>
+                                 <button class="btn btn-warning"
+                                    style="margin-bottom:1rem ;" type="submit">Remover</button>
+
+                              </form>
                            </li>
                         </div>
                      </div>

@@ -22,8 +22,10 @@
                            <h6 class="font-weight-bold my-2">R$ {{ p.price }}</h6>
                            {% if current_user.is_authenticated and current_user.admin == False%}
                            <li class="list-inline-item m-0">
-                              <form method="POST" action="/cart-add/{{p.id}}"><button class="btn btn-info"
-                                 style="margin-bottom:1rem ;" type="submit">Adicionar ao carrinho</button></form>
+                              <form method="POST" action="/cart">
+                                 <input name="id" type="hidden" value={{p.id}}>
+                                 <button class="btn btn-info" style="margin-bottom:1rem ;" type="submit">Adicionar ao carrinho</button>
+                              </form>
                            </li>
                            {% endif %}
                            <li class="list-inline-item m-0">
