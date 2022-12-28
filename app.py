@@ -204,13 +204,13 @@ def ver_produto(id:int):
     produto = Products.query.get_or_404(id)
     return render_template('ver.html', produto = produto)
 
-@app.route('/cart')
+@app.route('/cart', methods=['GET','POST'])
 def cart():
     return render_template('carrinho.html')
 
-@app.route('/cart-add/<int:id>', methods=['POST'])
-def add_to_cart(id:int):
-    pass
+#@app.route('/cart-add/<int:id>', methods=['POST'])
+#def add_to_cart(id:int):
+#    pass
 
 
 @app.route('/delete-product-cart/<int:id>',methods=['POST'])
