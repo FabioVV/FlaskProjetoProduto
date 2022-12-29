@@ -8,7 +8,7 @@
             <div class="col-md-12">
                <div class="titlepage">
                   <h2>Carrinho</h2>
-                  <h3 class="display-2">Total a pagar: R$ {{cart.total}}</h3>
+                  <h3 class="display-2">Total a pagar: R$ {{total_pagamento}}</h3>
                </div>
             </div>
          </div>
@@ -25,14 +25,12 @@
                            <h6 class="font-weight-bold my-2">R$ {{p.price}}</h6>
 
                            <li class="list-inline-item m-0">
-                              <form action="/ver/{{ p }}" method="get" id="verprod">
-                                 <button class="btn btn-dark" style="margin-bottom:1rem ;"
-                                    type="submit">ver</button>
-                              </form>
+                              <form method="GET" action="/ver/{{p.id}}"><button class="btn btn-primary"
+                                 style="margin-bottom:1rem ;" type="submit">Ver</button></form>
                            </li>
                            <li class="list-inline-item m-0">
-                              <form method="POST" action="/delete-product-cart">
-                                 <input name="id" type="hidden" value={{p.id}}>
+                              <form method="POST" action="/cart">
+                                 <input name="delete" type="hidden" value="{{p['id']}}">
                                  <button class="btn btn-warning"
                                     style="margin-bottom:1rem ;" type="submit">Remover</button>
 

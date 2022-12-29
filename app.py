@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 import uuid as uuid
 from flask_login import LoginManager, login_required, logout_user, current_user, login_user
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import func
+from sqlalchemy.sql import func, select
 from flask_migrate import Migrate
 from datetime import datetime
 from flask_login import UserMixin
@@ -15,7 +15,6 @@ import os
 
 app = Flask(__name__)
 app.secret_key = "chavesecreta"
-app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_TYPE'] = "filesystem"
 
 #DATABASE
@@ -207,40 +206,41 @@ def ver_produto(id:int):
 @app.route('/cart', methods=['GET','POST'])
 @login_required
 def cart():
-    
-    if 'cart' not in session:
-        session['cart'] = []
 
-    if request.method == 'POST':
-        id = request.form.get('id')
-        session['cart'].append(id)
-        return redirect('/cart')
+    if "cart" not in session:
+        session["cart"] = []
+
+    if request.method == "POST":
+
+        idd = request.form.get('id')
+        d = request.form.get('delete')
+
+        if idd:
+            # se for array na sessao de cookies, fazer assim a att
+            temp = session['cart']
+            temp.append(idd)
+            session['cart'] = temp
+            return redirect('/cart')
         
-    carrinho =  Products.query.filter_by(id)
-        
-    return render_template('carrinho.html', cart = carrinho)
+        if d:
+            temp = session['cart']
+            temp.remove(d)
+            session['cart'] = temp
+            return redirect('/cart')
+
+    carrinho = []
+    total = 0
+    for x in session["cart"]:
+        q  = Products.query.get_or_404(x)
+        total += q.price
+        carrinho.append(q)
+
+    return render_template('carrinho.html', cart = carrinho, total_pagamento = total)
     
 
 #@app.route('/cart-add/<int:id>', methods=['POST'])
 #def add_to_cart(id:int):
 #    pass
-
-
-@app.route('/delete-product-cart',methods=['POST'])
-@login_required
-def delete_product_cart():
-
-    id = request.form.get('id')
-    if id:
-        for x in session['cart']:
-            if id == x:
-                session['cart'].remove(x)
-        return redirect('/cart')
-
-    carrinho = []
-    for id in session['cart']:
-        carrinho.append(Products.query.get(id))
-    return render_template('carrinho.html', cart = carrinho)
 
 ##
 

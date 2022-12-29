@@ -15,7 +15,7 @@ my = mysql.connector.connect(
 
 
 cursor = my.cursor()
-#cursor.execute("CREATE DATABASE cla")  #remove the comment to create the database
+cursor.execute("CREATE DATABASE cla")  #remove the comment to create the database
 print('Database Created.') 
 # RUN THIS FILE ONLE ONCE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # RUN THIS FILE ONLE ONCE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
