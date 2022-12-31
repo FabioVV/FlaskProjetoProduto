@@ -111,8 +111,16 @@ def registrar():
             name = form.name.data
             username = form.username.data
             email = form.email.data
+
+            pic = request.files['foto_perfil']
+            picfilename = secure_filename(pic.filename)
+            picname = str(uuid.uuid1()) + "_" + picfilename
+            pic = picname
+            saver = request.files['foto_perfil']
+            saver.save(os.path.join(app.config['UPLOAD_FOLDER'],picname))
+
             passwordha = generate_password_hash(form.password_hash.data, 'sha256')
-            new_user = Users(name = name, username = username, email = email, password_hash = passwordha)
+            new_user = Users(name = name, username = username, email = email, password_hash = passwordha, profile_pic = pic)
             db.session.add(new_user)
             db.session.commit()
 
