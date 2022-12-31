@@ -69,6 +69,10 @@ def sobre():
 def notebook():
     return render_template("notebook.html")
 
+@app.route("/conta")
+def conta():
+    return render_template("user_profile.html")
+
 
 #APP
 
@@ -237,10 +241,6 @@ def cart():
 
     return render_template('carrinho.html', cart = carrinho, total_pagamento = total)
     
-
-#@app.route('/cart-add/<int:id>', methods=['POST'])
-#def add_to_cart(id:int):
-#    pass
 
 ##
 
