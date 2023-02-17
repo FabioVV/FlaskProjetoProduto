@@ -1,5 +1,1 @@
-# APP CADASTRO DE PRODUTOS 
-
-
-# Lojinha
-
+# APP Loja
