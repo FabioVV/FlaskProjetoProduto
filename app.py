@@ -18,7 +18,7 @@ app.secret_key = "chavesecreta"
 app.config['SESSION_TYPE'] = "filesystem"
 
 #DATABASE
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:guerra998@localhost/cla'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:senha@localhost/cla'
 db = SQLAlchemy(app)
 migrate = Migrate(app,db)
 
