@@ -119,7 +119,7 @@ def registrar():
             saver = request.files['foto_perfil']
             saver.save(os.path.join(app.config['UPLOAD_FOLDER'],picname))
 
-            passwordha = generate_password_hash(form.password_hash.data, 'sha256')
+            passwordha = generate_password_hash(form.password_hash.data, 'pbkdf2:sha1')
             new_user = Users(name = name, username = username, email = email, password_hash = passwordha, profile_pic = pic)
             db.session.add(new_user)
             db.session.commit()
@@ -274,4 +274,6 @@ class Products(db.Model):
     
 
 if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
     app.run("0.0.0.0", port=5002, debug=True)
